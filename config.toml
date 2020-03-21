@@ -1,0 +1,17 @@
+baseURL = "https://myselfhimanshu.github.io"
+languageCode = "en-us"
+title = "Data Summit"
+theme = "hyde"
+
+[Menus]
+  main = [
+      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/047himanshu/"},
+      {Name = "Github", URL = "https://github.com/myselfhimanshu/"},
+      {Name = "Twitter", URL = "https://twitter.com/047himanshu"}
+  ]
+
+
+[params]
+  #description = "I am Deep Learning practioner. I blog about Machine Learning, Deep Learning, Computer Vision and Natural Language Processing."
+  description = "Build great products"
+  themeColor = "theme-base-08"
