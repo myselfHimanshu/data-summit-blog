@@ -3,9 +3,8 @@ languageCode = "en-us"
 title = "Data Summit"
 theme = "hyde"
 
-pygmentsstyle = "b2"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
 
 disqusShortname = "myselfhimanshu-github-io"
 
