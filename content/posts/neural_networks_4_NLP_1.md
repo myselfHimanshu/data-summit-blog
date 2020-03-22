@@ -75,7 +75,7 @@ Original Motivation : Neurons in a brain.
 Simple Concept about any Neural Network model:<br><br>
 
 <div style="display: flex; justify-content: center;">
-  <img src="https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/neural-net-1.png?raw=true">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/neural-net-1.png?raw=true">
 </div>
 
 <br>
@@ -96,7 +96,7 @@ The linear separable data is straight forward and a linear function is just a po
 
 Some functions are defined below:
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/non-linear-functions.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/non-linear-functions.png?raw=true)
 
 Non-linear functions are those which have degree more than one and they have a curvature when we plot a non-linear function. The data is not always straight forward, there are different patterns, it can be complex and complicated.
 
@@ -116,7 +116,7 @@ This is a computational graph for an expression :
 
 $$ y = x^T Ax + bx + c $$
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/computational-graph.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/computational-graph.png?raw=true)
 
 - `X` : A node can be {tensor, matrix, vector, scalar etc}
 - An edge represents function argument.

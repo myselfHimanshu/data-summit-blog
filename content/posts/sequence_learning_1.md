@@ -74,7 +74,7 @@ An RNN architecture where:
 
 - `$Tx==Ty$` same length sequence.
 - `$a^0$` is initialized with zeros, can be random.
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn1.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn1.png?raw=true)
 
 - In here for the prediction of `$y^{<3>}$`, model will use not only `$X^{<3>}$` but also the information that it is getting from the previous two elements i.e `$X^{<2>}$` and `$X^{<1>}$`.
 - In RNN, the current prediction `$y^{<t>}$` will only depend on previous inputs but not the future inputs. (This case will be solved by *Bidirectional RNN*)
@@ -82,7 +82,7 @@ An RNN architecture where:
 **Forward Propogation**
 
 RNN Unit :
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn1_1.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn1_1.png?raw=true)
 
 Notation :
 
@@ -94,7 +94,7 @@ The activation function of `$a$` is usually *tanh* or *relu* and `$y$` depends o
 **Backward Propogation through time**
 
 Deep learning frameworks do backpropogation automatically for us. The architecture looks like this :
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn2.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn2.png?raw=true)
 
 Here, `$W_a, b_a, W_y, b_y$` are shared across each element of the sequence.<br />
 
@@ -111,7 +111,7 @@ Each loss is backpropogated in opposite direction of forward propogation steps a
 
 The architecture that we have described before is *many to many*. Other example with its architecture are mentioned above in table.
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn3.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn3.png?raw=true)
 
 In above image there are two architecture descibed.
 
@@ -138,7 +138,7 @@ So the language model predicts on the basis of likelihood or probability of the 
 
 For an example, *Cats average 15 hours of sleep a day <EOS>*
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn4.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn4.png?raw=true)
 
 - So given *Cats average 15* what is the probability the word is *hours*.
 - To get a probability of a given sentence
@@ -152,7 +152,7 @@ For an example, *Cats average 15 hours of sleep a day <EOS>*
 - Use the probabilities output by the RNN to randomly sample a chosen word for that time-step as `$\hat{y}^{<t>}$`. Then pass this selected word to the next time-step.
 See this image here
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn5.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn5.png?raw=true)
 
 - We feed in `$a^{<0>} = zeros$` and `$x^{<1>} = zeros$` vector.
 - We will choose a prediction randomly from distribution obtained by `$y^{<1>}$`. Let assume that the word is *the*.
@@ -194,7 +194,7 @@ We will go step by step of this GRU Unit (*Simplified Version*).<br />
 
 The GRU Unit:
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn6.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn6.png?raw=true)
 
 Here the shaded box is our last equation `$(\Gamma_U * \tilde{C}^{<t>}) + (1-\Gamma_U) * C^{<t-1>}$`
 
@@ -218,7 +218,7 @@ This `$\Gamma_r$` can be interpreted as relevance, how relevant is `$C^{<t-1>}$`
 The LSTM is a variation of the same theme as GRU but with an additional *forgot* gate. This also solves *long-term dependencies* and *vanishing gradient* problem and is more powerful than GRUs.
 
 The LSTM Unit:
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn7.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn7.png?raw=true)
 
 
 Notations:
@@ -244,7 +244,7 @@ Suppose for an example,<br />
 If we look just first three words, we won't be able to say if *teddy* is a toy or person. This is why we need the information from the future elements also.
 
 The architecture:
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn8.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn8.png?raw=true)
 
 - BiRNN is an acyclic graph.
 - The prediction `$\hat{y}^{<t>} = g(W_y[\overrightarrow{a}^{<t>}, \overleftarrow{a}^{<t>}] + b_y)$`
@@ -253,7 +253,7 @@ The architecture:
 ### Deep RNNs
 
 The architecture with 3 stacked layers
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/rnn9.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/rnn9.png?raw=true)
 
 In feed forward DNNs, there could be 100 or 200 layers. In DRNNs stacking 3 layers is already considered deep and expensive to train.
 

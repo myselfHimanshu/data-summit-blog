@@ -13,15 +13,15 @@ math = "true"
 **Basic Model**
 
 Let's start with a machine translation model of converting french to english:
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_1.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_1.png?raw=true)
 
 Given a sequence `X` we need the output `y`. Here we have a network called as `encoder` with *gru* or *lstm* blocks which feeds in french words one at a time and outputs a vector that will represent our input french sentence. This vector can be feeded to another network called as `decoder` and can be trained to output the translated sentence one word at a time.
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_2.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_2.png?raw=true)
 
 This kind of network can also be used for *Image Captioning* task. Given an image of cat `X` as input, predict the caption `y` "A cat sitting on a chair".
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_3.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_3.png?raw=true)
 
 We can first train our CNN and then feed the last layer as input to our decoder network to predict the caption.
 
@@ -29,7 +29,7 @@ We can first train our CNN and then feed the last layer as input to our decoder 
 
 How is our *language model* different from this *machine translation* model.
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_4.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_4.png?raw=true)
 
 The `decoder` network is pretty much same as our language model except the `$a^{<0>}$` part where we are using the `encoder` network which figures out the way of representing our input sentence. This can also be called as `conditional language model`.
 
@@ -156,20 +156,20 @@ For n-grams, Score will be:
 
 BP: penalty which stands for brevity penalty. Penalizes the sentences shorter than the target.
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_5.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_5.png?raw=true)
 
 **Attention Model**
 
 The problem of long sequence:
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_6.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_6.png?raw=true)
 
 - In encoder and decoder network, first we are trying to get the representation of the long french statement and then ask decoder to process and generate the translated sentence.
 - But in real world, a human wouldn't wait for the end of the sentence and then memorize it then try to translate it. He will translate a little at a time, part by part.
 - Encoder and decoder network score comes down for longer sentences.
 - Attention model works like a human that looks at parts at a time. This significantly increases the accuracy with bigger sequences.
 
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_7.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_7.png?raw=true)
 
 - Our network is a bidirectional RNN for our input `X`. Let the activations be
 
@@ -197,7 +197,7 @@ We softmax the attention weights so that their sum is 1
 `$$\alpha^{<t,t^{'}>} = \frac{exp(e^{<t,t^{'}>})}{\sum_{t^{'}=1}^{T_x}exp(e^{<t,t^{'}>})}$$`
 
 We calculate `$e^{<t,t^{'}>}$` using a small neural network:
-![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part3_8.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part3_8.png?raw=true)
 
 - `$s^{<t-1>}$` is the hidden state of the generator RNN from previous time step, and $$a^{<t'>}$$ is the activation of the our input bidirectional RNN.
 - The disadvantages of this algorithm is that it takes quadratic time or quadratic cost to run.
