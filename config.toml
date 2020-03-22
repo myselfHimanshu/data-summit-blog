@@ -3,6 +3,12 @@ languageCode = "en-us"
 title = "Data Summit"
 theme = "hyde"
 
+pygmentsstyle = "b2"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "myselfhimanshu-github-io"
+
 [Menus]
   main = [
       {Name = "LinkedIn", URL = "https://www.linkedin.com/in/047himanshu/"},
