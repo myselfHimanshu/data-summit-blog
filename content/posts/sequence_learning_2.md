@@ -40,7 +40,7 @@ We can see the related words are grouped together.
 **Using Word Embeddings**
 
 Given a named-entity recognition problem.
-![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part2_2.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_2.png)
 
 In this example *Sally Johnson* is a person name. And one way to know that it is person name and not organization is that *orange farmer* is a person. Suppose now we have our trained model using featurized word embeddings.
 
@@ -82,7 +82,7 @@ We can also use Euclidean distance as a similarity function.
 *How do we learn the embedding matrix?*
 
 First look at this diagram.
-![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part2_4.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_4.png)
 
 Here we need to predict the next word so we use neural network to build the language model.
 
@@ -172,13 +172,13 @@ The model to minimize is defined:
 
 Given a sentence or review we need to classify the ratings.
 
-![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part2_5.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_5.png)
 
 For this problem we might not have very large corpus but we can use pre-trained embedding vectors and it will work.
 
 *Simple Sentiment classification model*
 
-![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part2_6.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_6.png)
 
 - The embedding matrix may have been trained on say 100B words.
 - Dimension of word embedding is 300.
@@ -189,7 +189,7 @@ This simple model will work for short sentences but doesn't take order of words 
 *RNN for sentiment classification*
 
 The many to one architecture:
-![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part2_7.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_7.png)
 
 This model will take the *lacking in good* into account and this model will also generalize better even if words weren't in our dataset.
 
