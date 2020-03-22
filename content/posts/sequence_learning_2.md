@@ -33,7 +33,7 @@ Food|0.02|0.01|0.02|0.01|0.95|0.97
 We can come up with many features(the rows) let say we have 300 features, then this 300 dimension vector of value in columns becomes our representation.
 
 To visualize this representation we use *t-SNE* algo to reduce the features to 2-dimension
-![](https://github.com/myselfHimanshu/data-summit-blog/blob/master/images/part2_1.png?raw=true)
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_1.png)
 
 We can see the related words are grouped together.
 
