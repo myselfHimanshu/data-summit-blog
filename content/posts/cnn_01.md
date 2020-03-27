@@ -70,7 +70,7 @@ Every image can be represented as a matrix of pixel values.
 
 ### What are Channels ?
 
-Channel is a convolutional term used to refer to certain part of an image. In practicality, an image from standard digital camera will have 3 channels (RGB (red, green, blue)). An image printed on a newspaper has 4 channels (CMYK). You can imagine three 2d matrices over each other, each having pixels values in range of [0,255].
+Channel is a convolutional term used to refer to certain feature of an image. In practicality, an image from standard digital camera will have 3 channels (RGB (red, green, blue)). An image printed on a newspaper has 4 channels (CMYK). You can imagine three 2d matrices over each other, each having pixels values in range of [0,255].
 
 ![](https://static.packt-cdn.com/products/9781789613964/graphics/e91171a3-f7ea-411e-a3e1-6d3892b8e1e5.png)
 
