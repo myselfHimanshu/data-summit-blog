@@ -8,211 +8,308 @@ categories = []
 math = "true"
 +++
 
-## Convolutional neural network
+I am starting this series of posts, where in we'll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
+
+> If you're offered a seat on a rocket ship, don't ask what seat! Just get on.
+
+Ready ? Let's jump in.
+
+![](https://media.giphy.com/media/kgFZ6dOUGnYBO/giphy.gif)
 
 <hr>
 
-As I am starting this CNN series of posts. I would like you to know about how neural networks work and then continue reading.
+Convolutional Neural Networks are very similar to ordinary Neural Networks. 
 
-Convolutional Neural Networks are very similar to ordinary Neural Networks. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other. And they still have a loss function (e.g. SVM/Softmax) on the last (fully-connected) layer and all the tips/tricks we developed for learning regular Neural Networks still apply.
+1. A neuron receives some inputs 
+2. performs a dot product
+3. follows it with a non-linearity 
 
-So what changes? ConvNet architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.
+The complete network expresses a single differentiable score function.
 
-The above paragraph is taken directly from, source : https://bit.ly/3bBizE7. Go through entire CS231n later.
+<i>So why not use a normal Neural Network? </i>
 
-<hr>
+Images used in these kind of problems are often 224x224 or larger sizes. Imagine building a neural network to process 224x224 color images. That will be
 
-I'll try to explain all the concepts in a very layman's term. If you feel like you didn't understand any term or concept in this following series, kindly comment at the end of post in the section. I'll try to refactor the concept to make it more understandable.
+$$ 224 * 224 * 3 = 150528 $$ 
 
-```text
-Things to keep in mind :
+input features. 3 here are color channels (RGB) in an image.
 
-1. Share things
-2. Ask questions
-3. Research 
-4. Build and deploy model end to end.
-5. Magic of deep learning is in it's loss function.
-6. Mathematics is important. 
-   Try to answer why are you using this function?
-7. Machine Learning and Deep Learning are IT field.
-```
+Let's say you have 1024 neurons in next hidden layer, then we might have to train 
 
-### Your brain might be fooling you
+$$ 150528 * 1024 \approx 154M $$
 
-To start with I would like to show you an image. An image that will confuse you. Your brain is fooling you for now maybe because you might have never seen an image like this.
+150+ million parameters for the first layer only. 
+
+![](https://media.giphy.com/media/keZhECYHtGty4Jh1Vo/giphy.gif)
+
+
+The good thing about images are that <b> pixels are most useful features in the context of their neighbors </b>.
+
+The next reason is that positions can change. You want your network to detect a dog in an image irrespective of where it is. What I mean is, a dog can be in a corner of image or small dog or whether it is a close-up shot.
+These kind of images, would not activate the same neurons in the network, so network would react differently.   
+
+ConvNet architectures make the explicit assumption that the inputs are images. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.
+
+
+<b> Your brain might be fooling you !!! </b>
+
+Here, check out this image.
 
 ![](https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/08/eb7ff9947f527a2e84d7f06e79138b82.png)
 
-
 The above image is a black and white image, with color grids on it. Zoom out and in to see the magic. 
 
-From this we learn that `Color is not a dependable feature in CNN.`
+> Color is not a dependable feature in CNN.
+
+## Terminologies
+
+Every image can be represented as a matrix of pixel values.
+
+<img src="https://www.apsl.net/media/apslweb/images/gif-8.original.gif" style="width:150px;height:150px;" />
+
 
 ### What are Channels ?
 
-In practicality, most input images have 3 channels (RGB), 1 channel for grayscale images.
+Channel is a convolutional term used to refer to certain part of an image. In practicality, an image from standard digital camera will have 3 channels (RGB (red, green, blue)). An image printed on a newspaper has 4 channels (CMYK). You can imagine three 2d matrices over each other, each having pixels values in range of [0,255].
+
+![](https://static.packt-cdn.com/products/9781789613964/graphics/e91171a3-f7ea-411e-a3e1-6d3892b8e1e5.png)
+
+A grayscale image, has just one channel. The value of each pixel in the matrix ranges from 0 to 255 – zero indicating black and 255 indicating white.
 
 | ![](https://upload.wikimedia.org/wikipedia/en/4/4c/Channel_digital_image_RGB_color.jpg) | ![](https://upload.wikimedia.org/wikipedia/en/4/45/Channel_digital_image_red.jpg) | <img src="https://upload.wikimedia.org/wikipedia/en/a/a8/Channel_digital_image_green.jpg" /> | ![](https://upload.wikimedia.org/wikipedia/en/b/b0/Channel_digital_image_blue.jpg) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | RGB image                                                    | Red channel <br />(converted into grayscale)                 | Green channel<br />(converted into grayscale)                | Blue channel<br />(converted into grayscale)                 |
 
-In above images, the red dress is much brighter in the red channel than in the other two, and the green part of the picture is shown much brighter in the green channel.
+In above image, the red dress is much brighter in the red channel than in the other two, and the green part of the picture is shown much brighter in the green channel.
 
-There can be RGB, CMYK(printing an image on newspaper) types of channels. These RGB, CMYK you can think it is of some metrics i.e cm, km, mm. and as said earlier color is not a dependable feature in CNN.
+You shouldn't worry about RGB or CMYK specific channels. They are just like metrices which define an image. The main concept here is `channel`. An image can be divided into any number of channels, for an example, slide projector. You can imaging each slide as a channel and overlapping of these slides can form an image that gets projected over a screen.
 
-You can divide an image in any number of channels eg. slide projector, where different slides can form an image over a screen, channels in this example can be the slides.
+Working on a specific color feature may be useful when you are asking a question to the network like, find me all yellow color flowers.
 
-Colors may be useful when you are asking a question like `find me all yellow color flowers` . 
+> A channel is set of relatable features.
 
-The key components to learn here are `gradients` and `edges`.
+><b>Channel</b> Synonym :<br>
+> <i>feature map</i>, <i>convolved feature</i>, <i>activation map</i>
 
-<b>
-A `channel` is set of relatable features. <br>
-A `channel` can also be termed as `feature map`.
-</b>
-
-I'll explain, what a feature is in below sections.
-
-For an example, 
+Let's take the below image as an example to explain what a channel can be.
 
 ![](https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/2QQOex4/deep-learning-animated-word-cloud_s8oppv-il_thumbnail-full07.png)
 
-Let's divide this image into channels. Let's say our channels are A-Z.
+Now imagine that we have 26 channels for the given image. Let's say our channels are A-Z, as there are 26 alphabets so 26 channels.
 
-Channel A : where in all the `a` s from image are filtered out (wherever they are and however they are, just `a`s )
 
-Channel B : where in all the `b` s from image are filtered out.
+- Channel A : where in all the <i>a</i> s from image are filtered out (wherever they are and however they are, just <i>a</i>s )
+- Channel B : where in all the <i>b</i> s from image are filtered out.
+- and so on, till Channel Z.
 
-and so on, till Channel Z.
 
-Let's talk about Channel A. Now a particular `a` in that channel is called `feature` , it can be big, small, tilted, anything but same feature. 
+Let's talk about Channel A. Now a particular <i>a</i> in that channel is called `feature` , it can be big, small, tilted, anything but same feature. 
 
-Now, when I asked you to filter out just `a` or extract just a letter from the image, this extractor is termed as `filter` . If you need to extract say `c`, you need this `c filter` extractor. 
+Now, when I asked you to filter out just <i>a</i> or extract just a single alphabet from the image to create a channel, you might need an extractor to do so. This extractor is termed as `filter` . If you need to extract say <i>a</i>, you need this <i>c</i> filter. 
 
-<b>
-These filters can also be termed as: <br>
-    - feature extractor<br>
-    - n x n matrix<br>
-    - kernel<br>
-    - weights 
-</b>
+> <b>Filter</b> Synonym : <br>
+> <i>feature extractor</i>,
+> <i>n x n matrix</i>,
+><i>kernel</i>,
+> <i>weights</i> 
 
-Each `filter` will give a `channel`. 
+> Each filter gives us a channel. <br>
+> What is a channel? <br>
+> >Channel is a set of relatable features.
 
-### Building blocks of CNN
+### Building blocks of Convolutional Neural Network
 
-Follow this in vision:
+The primary purpose of Convolution is to extract features from the input image. As we have learned, how to speak a word by first learning what is an alphabet, similarly there are building blocks in CNN.
 
-Like in English 
+Like in english, we can define building blocks as : 
 
-`alphabets =make> words =make> sentences =make> paragraphs =make> stories`
+> alphabets combined => words combined => sentences combined => paragraphs combined => stories
 
-similarly in vision
+similarly in vision,
 
-`gradient and edges combined =make> textures and patterns combined =make> part of objects combined =make> complete objects =make> scenes`
+> gradient and edges combined => textures and patterns combined => part of objects combined => complete objects => scenes
 
-Get a general overall view of the steps and the below image depicts how machine learn to identify images...
+Look at below image, how does a network learn to identify each block that is mentioned above step by step.
 
 ![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_01_01.png)
 
-source : https://distill.pub/2017/feature-visualization/
-
 ### What are gradients and edges ? 
 
-We refer "gradient" as change in brightness over a series of pixels. 
+We refer `gradient` as change in brightness over a series of pixels. 
 
-<img src="https://lh3.googleusercontent.com/proxy/2PBEIWIjfceFVKJiOI883rs8b6G6UQ5wqh8VGtg2epSWrL_wXeZ6bO5ReKBfF1XhRzf7o-K2aOerVQVR12DfDWdQ1MfMzuoAnAtdJSSnS-yLDA" style="zoom:50%;" />
+<img src="https://huaxin.cl/wp-content/uploads/2018/09/gradient-black-to-white-wallpaper-4.jpg" style="zoom:15%;" align="middle"/>
 
-The above image is linear gradient from black to white. This gradient is smooth and we wouldn't say there is "edge" in this image. Edges are a bit fuzzy in above image. In real objects those edges can be found by looking at sharp transitions. You can find edges in the image below
+The above image is linear gradient from black to white. This gradient is smooth and we wouldn't say there is edge in this image. Edges are a bit fuzzy in above image. In real objects those `edges` can be found by looking at sharp transitions. You can find edges in the image below
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%C3%84%C3%A4retuvastuse_n%C3%A4ide.png/500px-%C3%84%C3%A4retuvastuse_n%C3%A4ide.png)
 
 
 ### What is Convolution ?
 
-First let's see, what human eyes sees and what machine sees when looking at an image.
+Convolution takes care of spatial relationship between pixels by learning features from input image.
+Let's see, what human eyes sees and what machine sees when looking at an image.
 
 ![](https://ai.stanford.edu/~syyeung/cvweb/Pictures1/imagematrix.png)
 
-First image is what human eye sees, second one is how an image is interpreted (set of numbers also pixels) and third image is what machine sees( n x n matrix of numbers).
+- First image is what you see; 
+- Second image is how an image is interpreted (matrix of pixels values); 
+- Third image is what machine sees ( n x n matrix of numbers).
 
-The above is an image represented as a matrix of pixel values. Each pixel value ranges between [0,255], with 0 being black and 255 being white.
+<i> How does convolution preserves spatial relationship ? </i>
 
-From now onwards, we will talk about these matrixes. 
+Consider, a 5x5 image whose pixel values are only 0 an 1.
 
-We were talking about kernels and features, look at the image below
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image1.png)
 
-![](https://cdn-images-1.medium.com/max/1024/1*Fw-ehcNBR9byHtho-Rxbtw.gif)
+and also conside 3 x3 matrix as shown below
 
-The blue object is your image of size (5x5) ( 5 is your width and height) , the dark patch that you see is a `kernel` or `filter` or `3x3 matrix` , which is initialized with random values.
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image2.png)
 
-There is dot product between `3x3 filter` and `3x3 patch` of image that it is moving on step by step. This `step` is termed as `stride` (here `stride=1`).  The results of dot product is creating that `white` object or `white channel`. 
-
-
-<b>This process of `n x n filter` rolling over on top of the image and computing dot product step by step is termed as `convolution`.</b>
-
-
-These `kernels` are initialised with random values in the beginning. These values will change over in model training. By model I mean is, when you train your deep learning model.
-
-Here is the visualization of convolution,
+Then, convolution of 5x5 image and 3x3 image can be computed as shown below : 
 
 ![](https://icecreamlabs.com/wp-content/uploads/2018/08/33-con.gif) 
 
-or check another intuative example:
+Let's understand what is happening ? How the computation is being processed ?
 
-![edge_detection](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/edge_detection.png)
+We slide the yellow matrix over our green image by 1 pixel, and for every position we compute element wise multiplication (between two matrices) and add up the multiplication outputs to get a final integer which forms an element in our pink convolved feature matrix.
+
+There are some terminologies for each step that is happening above.
+
+Suppose we have blue box as our image and the dark patch as our yellow matrix and white box as our convolved feature matrix.
+
+![](https://cdn-images-1.medium.com/max/1024/1*Fw-ehcNBR9byHtho-Rxbtw.gif)
+
+The blue object is your image of size (5x5) ( 5 is your width and height) , the dark patch that you see is our `kernel`, which is initialized with random values.
+
+There is dot product between 3x3 filter and 3x3 patch of image. This filter slides over the image 1 step at a time. 
+
+This <i>step</i> is termed as `stride` (here stride=1) and the results of dot product is creating our output channel. 
 
 
-so if we are convolving `3x3 filter matrix` on `6x6 object matrix` we get `4x4 object matrix`. Whatever we are getting as a result, we are applying other filter over it to get next set of objects. (I am talking about layers of Neural Networks).
+>This process of n x n filter rolling over on top of the image and computing dot product step by step is termed as <b>convolution</b>.
 
-Why we are using these `kernels`? As explained above, a `kernel` is a `feature extractor`.
 
-### Parameters
+These kernels are initialised with random values in the beginning. These values will change over in model training. By model I mean is, when you train your deep learning model. Different values of the filter matrix will produce different feature maps for same input image.
 
-These `kernels` have values which are termed as `parameters`. So, a `3x3 kernel` has `9 parameters`.
+Consider another image,
 
-If we use `5x5 kernel` on `5x5 image` , you would have got `1x1 object`. So I can say, convolving with `5x5 kernel` is same as convolving with `3x3 kernel (twice)`. 
+![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image11.png)
 
-Now the question arises is, how many parameters we have to train if we use `3x3` or `5x5` kernel. 
+Let's see effect of different filters over above image,
 
-As, less parameters means, model will take less time to train. We need to build an CNN architecture with less parameters which will give us best result. 
+| Operation | Filter | Convolved Image|
+| :-----: | :-----: | :-----: |
+|Identity|$$\begin{pmatrix}0 & 0 & 0\\\ 0 & 1 & 0\\\0 & 0 & 0\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image11.png)
+|
+|Vertical Edge|$$\begin{pmatrix}-1 & 0 & 1\\\ -1 & 0 & 1\\\ -1 & 0 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image7.png)
+|
+|Horizontal Edge|$$\begin{pmatrix}-1 & -1 & -1\\\ 0 & 0 & 0\\\1 & 1 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image8.png)
+|
+|Horizontal Edge Sharpen|$$\begin{pmatrix}-4 & -4 & -4\\\ 0 & 0 & 0\\\ 4 & 4 & 4\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image9.png)
+|
+|Blured Edge|$$ \frac19 \begin{pmatrix}1 & 1 & 1\\\ 1 & 1 & 1\\\1 & 1 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image10.png)
+|
 
- Look at the table below which will tell you about total number of parameters to train if we use `n x n size` kernel.
+In practice, a CNN learns the values of these filters during training process.
 
-| N <br />`(N x N image)` | total number of Parameters <br />`( 3x3 kernel )` | total number of Parameters <br />`( N x N kernel )` |
+See what's happening ? 
+
+Vertical edge filter detects vertical edges and horizontal edge filter detects horizontal edges. A bright pixel in output image indicates that there is strong edge around there in original image.
+
+### Output Channel
+
+When we convolve 3x3 filter on 6x6 image we get 4x4 object matrix. 
+
+Whatever we are getting as a result, we are applying other filter over it to get next set of objects. (I am talking about layers of Neural Networks).
+
+The size of the output channel can be calculated using following formula,
+
+$$
+    n_o = \lfloor\frac{n_i+2p-k}{s}\rfloor + 1
+$$
+
+$n_o$ : number of output features in a dimension<br>
+$n_i$ : number of input features in a dimension<br>
+$k$   : kernel size<br>
+$p$   : padding size<br>
+$s$   : stride size
+
+I will explain what is padding and why we use it later.
+
+### Parameters of kernels
+
+These kernels have values which are termed as <i>parameters</i>. We can say a 3x3 kernel will have 9 parameters.
+
+Now coming to some mathematical concepts. 
+
+- If we use a 5x5 kernel for convolution on 5x5 image, we will get output object of size 1x1. 
+- If we use a 3x3 kernel for convolution on 5x5 image, we will get output object of size 3x3 and again convolving the output with 3x3 kernel will give us output object of size 1x1. 
+
+So I can say, convolving with 5x5 kernel is same as convolving with 3x3 kernel (twice).
+
+Now the question arises is, <i>What size kernel to use ? </i> 
+
+The answer to above question lies in another question, 
+
+<i>How many parameters we have to train on if we use 3x3 or 5x5 kernel?</i>
+
+ Look at the table below which will tell you about total number of parameters to train if we use n x n size kernel.
+
+| N <br />(N x N image) | total number of Parameters <br />( 3x3 kernel ) | total number of Parameters <br />( N x N kernel ) |
 | :---------------------: | :-----------------------------------------------: | :-------------------------------------------------: |
-|            5            |                   (3x3)(2) = 18                   |                     (5x5) = 25                      |
-|            7            |                   (3x3)(3) = 27                   |                     (7x7) = 49                      |
-|            9            |                   (3x3)(4) = 36                   |                     (9x9) = 81                      |
-|           11            |                   (3x3)(5) = 45                   |                    (11x11) = 121                    |
+|            5            |                   (3x3)*(2) = 18                   |                     (5x5) = 25                      |
+|            7            |                   (3x3)*(3) = 27                   |                     (7x7) = 49                      |
+|            9            |                   (3x3)*(4) = 36                   |                     (9x9) = 81                      |
+|           11            |                   (3x3)*(5) = 45                   |                    (11x11) = 121                    |
 
-The above table tells us why using `3x3 kernel` is better than the other size kernels. 
+The above table tells us why using 3x3 kernel is better than the other size kernels.
 
-Do we have to use odd number shaped kernel ? it make sense to have our kernel odd shaped because it has axies of symmetry. 
+Less parameters means, model will take less time to train on. It will be faster. We need to build an CNN architecture with less parameters and that gives us best result.
+
+There will be tradeoffs between parameters and result. But we need to come up with an elegant architecture and accordingly we will select our kernel size.
+
+In many other blogs or research papers, you might see researchers using odd shaped kernel.
+
+<i>Is it necessary to just use odd number shaped kernel?</i> 
+
+It make sense to have our kernel odd shaped because it has axies of symmetry. 
 
 Let's draw a black line on a piece of paper. If I want my machine to learn the difference between white line and black line. I need to tell it that left side of line is white and right side is also white and the middle column is black. The machine needs to differentiate the black pixels with what is not line i.e white pixels. We need to provide both the information. The machine needs to know the start and the end of a feature.
 
+You can check above table of edge detection, what values our kernels are made up of? and what is the output.
+
 ### Receptive Field
+
+This is one of most important concept in CNNs. 
+
+> A receptive field is defined as region in the input that a particular CNNs feature is looking at.
 
 ![](https://www.researchgate.net/publication/316950618/figure/fig4/AS:495826810007552@1495225731123/The-receptive-field-of-each-convolution-layer-with-a-3-3-kernel-The-green-area-marks.png)
 
-Let's say `Layer1` is your `image size 5x5` and green color matrix is your `kernel 3x3` . If you convolve on image, you will get `3x3 object` which is your `Layer2` and convolving again on this `Layer2` you will get `1x1 object` which is your `Layer3`.
+Let's say Layer1 is your image of size 5x5 and green color matrix is your kernel of size 3x3. 
+
+If you convolve the kernel on image, you will get 3x3 object which is your Layer2 and convolving again on this Layer2 you will get object of size 1x1, which is your Layer3.
 
 Let's take green cell from Layer2. 
 
 How many cells can it see in Layer1? The answer is 9. 
 
-So, the `local receptive field` of that cell will be 9. 
+So, the `local receptive field` of that cell is 9. 
 
-If I ask that cell what is in there in (25,25) cell of Layer1 ? The answer it will give is `I have no clue`. 
+- If I ask that cell what is in there in (25,25) cell of Layer1 ? 
+    - Answer : "I have no clue". 
+- Now If I ask the yellow cell from Layer3, how many cells it can see ? 
+    - Answer : "I have seen the whole image". 
 
-Now If I ask the yellow cell from Layer3, how many cells it can see ? The answer will be `it has seen the whole image`. Wondering how ? 
+<i>Wondering how ? </i>
 
-A `5x5 kernel` might have seen the whole image. And as explained earlier, using `3x3 kernel (twice)` is similar to using `5x5 kernel`. So, the `local receptive field` of a cell will always be the size of `kernel` and  the `global receptive field` of that yellow cell from Layer3 will be full `5x5 image`. 
+A 5x5 kernel might have seen the whole image and as explained earlier, using 3x3 kernel (twice) is similar to using 5x5 kernel. So, the `global receptive field` of that yellow cell from Layer3 will be full 5x5 image and the local receptive field of a cell will always be the size of kernel. 
 
 So the last cell should have seen the whole image, otherwise it wouldn't know if cat is in image or not.
 
-Now, if we have to build a network for `401x401 image` , how many layers would we need using `3x3 kernel`? 
+Now, if we have to build a network for 401x401 image, 
+
+<i>How many layers would we need by just using 3x3 kernel</i>? 
 
 | image size | kernel size | output size | Global <br />Receptive field size |
 | :--------: | :---------: | :---------: | :-------------------------------: |
@@ -222,20 +319,11 @@ Now, if we have to build a network for `401x401 image` , how many layers would w
 |    ...     |    3 x 3    |     ...     |                ...                |
 |   3 x 3    |    3 x 3    |    1 x 1    |             401 x 401             |
 
-The answer will be, `200` layers.
+The answer will be, 200 layers.
 
-This is not a nice way to train a model. Adding 200 layers is a nightmare. So, we have to downsample in between the layers also termed as `max-pooling` . We will go through every concept.
+This is not a nice way to train a model. Adding 200 layers is a nightmare. So, we have to downsample in between the layers also termed as `max-pooling` . We will go through this concept in next post.
 
-#### Some brainstorming questions.
-
-#### Questions
-
-1. What are Channels and Kernels?
-2. Why should we (nearly) always use 3x3 kernels?
-3. How many times to we need to perform 3x3 convolutions operations to reach close to 1x1 from 199x199 (type each layer output like 199x199 > 197x197...)
-4. How are kernels initialized? Why are these `kernels` initialised randomly at the beginning and not any other specific intialization?
-5. What happens during the training of a DNN?
-
+<hr>
 
 
 
