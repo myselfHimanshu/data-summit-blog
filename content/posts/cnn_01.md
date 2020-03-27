@@ -82,7 +82,7 @@ A grayscale image, has just one channel. The value of each pixel in the matrix r
 
 In above image, the red dress is much brighter in the red channel than in the other two, and the green part of the picture is shown much brighter in the green channel.
 
-You shouldn't worry about RGB or CMYK specific channels. They are just like metrices which define an image. The main concept here is `channel`. An image can be divided into any number of channels, for an example, slide projector. You can imaging each slide as a channel and overlapping of these slides can form an image that gets projected over a screen.
+You shouldn't worry about RGB or CMYK specific channels. They are just like metrices which define an image. The main concept here is `channel`. An image can be divided into any number of channels, for an example, slide projector. You can imagine each slide as a channel and overlapping of these slides will form an image that gets projected over a screen.
 
 Working on a specific color feature may be useful when you are asking a question to the network like, find me all yellow color flowers.
 
@@ -91,7 +91,7 @@ Working on a specific color feature may be useful when you are asking a question
 ><b>Channel</b> Synonym :<br>
 > <i>feature map</i>, <i>convolved feature</i>, <i>activation map</i>
 
-Let's take the below image as an example to explain what a channel can be.
+Let's take this image as an example to explain what a channel can be.
 
 ![](https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/2QQOex4/deep-learning-animated-word-cloud_s8oppv-il_thumbnail-full07.png)
 
