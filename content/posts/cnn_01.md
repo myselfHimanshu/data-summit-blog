@@ -105,12 +105,12 @@ Now imagine that we have 26 channels for the given image. Let's say our channels
 
 Let's talk about Channel A. Now a particular <i>a</i> in that channel is called `feature` , it can be big, small, tilted, anything but same feature. 
 
-Now, when I asked you to filter out just <i>a</i> or extract just a single alphabet from the image to create a channel, you might need an extractor to do so. This extractor is termed as `filter` . If you need to extract say <i>a</i>, you need this <i>c</i> filter. 
+Now, when I asked you to filter out just <i>a</i> or extract just a single alphabet from the image to create a channel, you might need an extractor to do so. This extractor is termed as `kernel` . If you need to extract say <i>a</i>, you need this <i>c</i> filter. 
 
-> <b>Filter</b> Synonym : <br>
+> <b>Kernel</b> Synonym : <br>
 > <i>feature extractor</i>,
 > <i>n x n matrix</i>,
-><i>kernel</i>,
+><i>filter</i>,
 > <i>weights</i> 
 
 > Each filter gives us a channel. <br>
@@ -322,6 +322,38 @@ Now, if we have to build a network for 401x401 image,
 The answer will be, 200 layers.
 
 This is not a nice way to train a model. Adding 200 layers is a nightmare. So, we have to downsample in between the layers also termed as `max-pooling` . We will go through this concept in next post.
+
+### Initializing kernel values
+
+The values of a neural network must be initializes to random numbers.
+
+Understand these 2 concepts :
+
+<b>Deterministic Algorithms vs Non-Deterministic Algorithms</b>
+
+Given an unordered array of numbers, a bubble sort algorithm will always execute in same way to give same ordered result.  
+
+But some problems cannot be solved by this technique efficiently because of complexity of data. The algorithm may run but may never give you required solution or might run infinitely.
+
+To solve such problems, we use non-deterministic algorithms.
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Difference_between_deterministic_and_Nondeterministic.svg/950px-Difference_between_deterministic_and_Nondeterministic.svg.png)
+
+A deterministic algorithm that performs f(n) steps always finishes in f(n) steps and always returns the same result. A non deterministic algorithm that has f(n) levels might not return the same result on different runs. A non deterministic algorithm may never finish due to the potentially infinite size of the fixed height tree.
+
+These non-deterministic algorithm will arive at approximate solution but will be fast. These solution will often be satisfactory for such problems.
+
+These kind of algorithms make use of randomness. You might have studied about gradient descent algorithm, these are referred to as [stochastic algorithms](https://en.wikipedia.org/wiki/Stochastic_optimization).
+
+The process of finding solution is incremental, starting from a point in sapce of possible solutions to good enough solution. As we know nothing about space, we start with random chosen point.
+
+Neural Networks are trained using these kind of algorithms. 
+
+> Training algorithms for deep learning models are usually iterative in nature and thus require the user to specify some initial point from which to begin the iterations. Moreover, training deep models is a sufficiently difficult task that most algorithms are strongly affected by the choice of initialization.
+> Perhaps the only property known with complete certainty is that the initial parameters need to “break symmetry” between diﬀerent units. If two hidden units with the same activation function are connected to the same inputs, then these units must have diﬀerent initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic costant model will constantly update both of these units in the same way.
+- page 296,297, [deep learning book](https://www.deeplearningbook.org/contents/optimization.html).
+
+A careful initialization of the network can speed up the learning process.
 
 <hr>
 
