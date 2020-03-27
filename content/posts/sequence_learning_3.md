@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2020-02-23T22:22:22+05:30
+date = 2019-03-04T22:22:22+05:30
 title = "Sequence Model Part 3 : Sequence models & Attention mechanism"
 slug = ""
 tags = ["NLP","RNN"]
