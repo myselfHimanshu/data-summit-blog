@@ -43,10 +43,10 @@ $$ 150528 * 1024 \approx 154M $$
 ![](https://media.giphy.com/media/keZhECYHtGty4Jh1Vo/giphy.gif)
 
 
-The good thing about images are that <b> pixels are most useful features in the context of their neighbors </b>.
-
 The next reason is that positions can change. You want your network to detect a dog in an image irrespective of where it is. What I mean is, a dog can be in a corner of image or small dog or whether it is a close-up shot.
 These kind of images, would not activate the same neurons in the network, so network would react differently.   
+
+The important thing about images are that <b> pixels are most useful features in the context of their neighbors </b>.
 
 ConvNet architectures make the explicit assumption that the inputs are images. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.
 
@@ -105,7 +105,7 @@ Now imagine that we have 26 channels for the given image. Let's say our channels
 
 Let's talk about Channel A. Now a particular <i>a</i> in that channel is called `feature` , it can be big, small, tilted, anything but same feature. 
 
-Now, when I asked you to filter out just <i>a</i> or extract just a single alphabet from the image to create a channel, you might need an extractor to do so. This extractor is termed as `kernel` . If you need to extract say <i>a</i>, you need this <i>c</i> filter. 
+Now, when I asked you to filter out just <i>a</i> or extract just a single alphabet from the image to create a channel, you might need an extractor to do so. This extractor is termed as `kernel` . If you need to extract say <i>c</i>, you need this <i>c</i> filter. 
 
 > <b>Kernel</b> Synonym : <br>
 > <i>feature extractor</i>,
@@ -294,7 +294,7 @@ Let's take green cell from Layer2.
 
 How many cells can it see in Layer1? The answer is 9. 
 
-So, the `local receptive field` of that cell is 9. 
+So, the `local receptive field` of that cell is 3. 
 
 - If I ask that cell what is in there in (25,25) cell of Layer1 ? 
     - Answer : "I have no clue". 
@@ -350,7 +350,7 @@ The process of finding solution is incremental, starting from a point in sapce o
 Neural Networks are trained using these kind of algorithms. 
 
 > Training algorithms for deep learning models are usually iterative in nature and thus require the user to specify some initial point from which to begin the iterations. Moreover, training deep models is a sufficiently difficult task that most algorithms are strongly affected by the choice of initialization.<br>
-> Perhaps the only property known with complete certainty is that the initial parameters need to `break symmetry` between diﬀerent units. If two hidden units with the same activation function are connected to the same inputs, then these units must have diﬀerent initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic costant model will constantly update both of these units in the same way.
+> Perhaps the only property known with complete certainty is that the initial parameters need to `break symmetry` between diﬀerent units. If two hidden units with the same activation function are connected to the same inputs, then these units must have diﬀerent initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic constant model will constantly update both of these units in the same way.
 - page 296,297, [deep learning book](https://www.deeplearningbook.org/contents/optimization.html).
 
 A careful initialization of the network can speed up the learning process.
