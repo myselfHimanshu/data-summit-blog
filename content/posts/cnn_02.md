@@ -1,5 +1,5 @@
 +++
-draft = true
+draft = false
 date = 2020-03-29T22:22:22+05:30
 title = "Convolutional Neural Network Part 2 : Neural Architecture"
 slug = ""
@@ -8,46 +8,42 @@ categories = []
 math = "true"
 +++
 
-In this tutorial, we will be training the network on MNIST dataset. 
-
-We'll try to understand each and every step, what is input? and what will be the output? 
+In this tutorial, we will be training the network on MNIST dataset.  We'll try to understand neural network architecture. 
 
 The most important thing to understand in deep learning is what goes in and what comes out, with the understanding of what the network is doing inside that black box. Here black box refers to the hidden layers of DNN. What is it seeing first and at the end of the training the model.
 
-The below architecture is not meant to give us very good score. In this series we'll only focus on **what**.
+The below architecture is not meant to give us very good score. In this series we'll only focus on pytorch-101. To understand the basic terminologies of CNN building blocks. Kindly go through this post.
+
+[CNN Part 1 : Basic Concepts](https://myselfhimanshu.github.io/posts/cnn_01/)
 
 Ready ? Let's jump in.
 
-![](https://media.giphy.com/media/11OWKkvYUmZQOs/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/11OWKkvYUmZQOs/giphy.gif"/>
+</p>
 
-
-### Basic Concepts
-
-To understand the basic terminologies of CNN building blocks. Kindly go through this post.
-
-[CNN Part 1 : Basic Concepts](https://myselfhimanshu.github.io/posts/cnn_01/)
 
 ## Neural Architecture : Part II
 
 In the below section we are introducting two main concept. 
 
-*Max-pooling* and *receptive field.*
-
-Now, in the last post we have calculated how many layers we have to use if we use 3x3 kernel on a 401x401 image size with stride=1 and padding=0?
-
-The answer was 200.
+**Max Pooling** and **Receptive Field**
 
 Before jumping further, let me tell you **what padding is?**
 
 You can think padding as extra rows and columns of pixels that are applied around a feature map.
 
-![](https://lh3.googleusercontent.com/proxy/MoeTZDgmtTWfZ0BNFjBrFbkmURWFhn6Y_vBo_FiPc07sjCsxEF-yrwZN1sG5ZhoUP_kBOMtImaCtXFhohVDrHAGJWnU)
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/padding.jpg">
+</p>
 
-In the above image, we have a feature map of 6x6, if we apply a padding=1, we add a row and a column around that feature map. This feature map will result in size of 8x8 now on which we apply convolution.
+In the above image, we have a feature map of 5x5, if we apply a padding=1, we add a row and a column around that feature map. This feature map will result in size of 7x7 now on which we apply convolution.
 
 It is not necessary to apply padding with value 0, as shown in the image. We will see what padding should we apply such that we can gain more information from around the corners of the feature map.
 
-Now coming back to our layers concept.
+Now, in the last post we have calculated how many layers we have to use if we use 3x3 kernel on a 401x401 image size with stride=1 and padding=0?
+
+The answer was 200.
 
 **Do we really need 200 layers in our network?**
 
@@ -57,7 +53,8 @@ We need our model to learn fast and learn accurate, for which we should built an
 
 > Refer to Building blocks of Convolutional Neural Network section of [previous post](https://myselfhimanshu.github.io/posts/cnn_01/).
 
-To reduce number of layers, one technique to downsample a feature map is MaxPooling.
+To reduce number of layers, one technique to downsample a feature map is `MaxPooling`.<br><br><br>
+
 
 ![](https://cdn-images-1.medium.com/freeze/max/1000/1*ghJyfuw-9a5esjJqGuBggA.jpeg?q=20)
 
@@ -73,25 +70,25 @@ It helps in reducing the number of learned parameters, which helps in reducing t
 
 **Why is above line important?**
 
-Let's work on an image of 4.
+Let's work on an image of 4. Here we apply one max pool layer of size 2x2 over first image, which results second image and applying another max pool layer we get image 3.
 
 |image|apply maxpool|apply maxpool again|
 |-----|------|------|
 |![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_org.png)|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool_2.png)|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/maxpool3.png)|
 
-The above process is just applying maxpool again and again on the same image. This doesn't happen in the network. This is a concept that I am explaining you about where to use maxpool layer.
-
-Now, if we apply one max pool layer of size 2x2 over first image, it will result in second image and if we apply another max pool layer we get image 3.
+The above process is applying maxpooling again and again on the same image. This doesn't happen in the network. There will convolution in middle. The concept I am explaining you is about where to use maxpool layer and what will happen if we start applying maxpooling without knowing what the network has learned in previous layer. 
 
 Now ask what is your network learning if I do this?
 
 It might be learning bananas for minions.
 
-![](https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif"/>
+</p>
 
 So we need to really careful, where should I apply the maxpool layer.
 
-> Never use max pooling close to your output/prediction layer.
+> Never use max pooling close to your output/prediction layer, the network might end up loosing important features.
 
 **Are there any other effects on feature maps if we apply max pooling layer?**
 
@@ -119,17 +116,25 @@ Given:
 
 We have image size of 400x400, kernel size of 3x3, stride = 1, padding = 0 and max pool layer (MP) of size 2x2 with stride 2.
 
+Here, we will write down our output object size,
+
 400 | 398 | 396 | 394 | 392 | 390 | MP (2x2) <br>
 195 | 193 | 191 | 189 | 187 | 185 | MP (2x2) <br>
 92 | 90 | 88 | 86 | 84 | 82 | MP (2x2) <br>
 41 | 39 | 37 | 35 | 33 | 31 | MP (2x2) <br>
 15 | 13 | 11| 9 | 7 | 5 | 3 | 1 <br>
 
-By using maxpooling layer we have reduced the layer count from 200 to 27.
+By using maxpooling layer we have reduced the layer count from 200 to 27. That's great right ? 
 
-Now, lets understand the concept of channels.
+<p align="center">
+<img height="200" width="300" src="https://media.giphy.com/media/xT9IgzUuC5Ss6ZnTEs/giphy.gif">
+</p>
 
-**How many kernels are we using in the network?**
+Wait there is more!!!
+
+Now, lets understand the concept of channels once again. In last post we have used single channel in input image for the calculations. Let's get practical and introduce our RGB channels of the image.
+
+**How many kernels are we using in the network now?**
 
 We have an image of size 400x400x3. Let's us assume we add 32 kernels in the first layer, 64 in second, 128 in thrid and so on.
 
@@ -155,27 +160,17 @@ So, our network will look like,
 
 Let's understand how convolution process is taking place using the above architecture.
 
-If we have an object with 3 channels, there should be 1 kernels of size (3x3x3) where last index value 3 is channels of a kernel which gives outputs.
+If we have an object with 3 channels, there should be 1 kernels of size (3x3x3) where last index value 3 are channels of the kernel.
 
 Look at image below, to understand how multi channels are handled.
 
 ![](https://miro.medium.com/max/1440/1*ciDgQEjViWLnCbmX-EeSrA.gif)
 
-While building a network be careful of receptive field. If the receptive field of the output is too small, ask yourself a question, is my network really learning something?
-
-**How does the channels size increases per layer and what would be it's effect on the network or my machine ?**
-
-From the above table, in 5th layer we get 512 channels. So, how do I know whether my 512 channels are enough for my network to learn? Answer is we don't know, we need to experiment with these numbers.
-
-As this 512 is a large number, a machine which is capable of handling it will only be able to do it. If I ask you to run on say T4, your machine will take more time to train your network as compared to say P100 or any higher gpu model series.
-
-This number depends on how complex is the dataset? like in medical use cases, we might need 1024 channels and it might still be not enough.
-
-There is another problem in the above network. Check the table once again.
+Do you see each kernel has it's own channel. Now we have another problem.
 
 **How many parameters are we initializing ?**
 
-More the number of parameters initialized slower will the training time of the network. Let's again go through the network,
+Let's go through the network again,
 
 |Object Size|Kernel Size|Output Size|Parameters|
 |----|----|----|----|
@@ -188,22 +183,38 @@ More the number of parameters initialized slower will the training time of the n
 |195x195x512|(3x3x512)x512|193x193x512|2359296|
 |...|...|...|...|
 
-Do you see the number of parameters that are increasing? 
 
+**How does increase in channel numbers affect the network and machine?**
 
+From the above table, we have kernels as 32,64,128,256,512. So, how do I know whether my 512 channels are enough for my network to learn? Answer is we don't know, we need to experiment with these numbers.
 
-In 6th layer we have like 23M parameters. These increasing number of parameters can really slow down the networks learning process.
+Now, look at kernel size of 5th layer. We have (3x3x256)x512 as our kernel size. In 6th layer we have like 23M parameters. These increasing number of parameters can really slow down the networks learning process.
 
-What's the solution? 
+> The kernel size = number of learnable parameters
 
-![](https://media.giphy.com/media/3z3bxq78R9fVK/giphy.gif)
+We have asked our network to learn 23M parameters just in 6th layer. Are you able to see what's happening. The more we add these parameters and ask our network to learn, the more it will slow down.
+
+If you are very very rich person who can buy expensive GPUs, you can add any number of parameters in the network.
+
+<p align="center">
+<img src="https://media.giphy.com/media/JpG2A9P3dPHXaTYrwu/giphy.gif">
+</p>
+
+Training your network on K80 GPU will be slower than V100 GPU or any higher gpu model series.
+
+**What's the solution?**
+
+<p align="center">
+<img src="https://media.giphy.com/media/3z3bxq78R9fVK/giphy.gif">
+</p>
 
 Stay tuned for the post!!!
 
 For this post, we will continue with code now!!! Some hands on experience is necessary, too much theory !!! bruh... boring...
 
-![](https://media.giphy.com/media/bzE1WAm8BifiE/giphy.gif)
-
+<p align="center">
+<img src="https://media.giphy.com/media/bzE1WAm8BifiE/giphy.gif">
+</p>
 
 # Into the Code
 
@@ -223,7 +234,10 @@ import matplotlib.pyplot as plt
 plt.rcParams['figure.figsize'] = (10,5)
 ```
 
-### GPU for training 
+- *datasets* will be used to download MNIST dataset which has been cleaned for us and provided by pytorch. 
+- *transforms* are used to convert arrays to tensors which are used in pytorch framework. These can also be used to do some augumentation on the data. We will go through augumentation techniques in another post.
+
+**GPU for training**
 
 In order to use GPU, we need to identify and specify GPU as the device. Later, in training loop, we will load the data onto the device.
 
@@ -238,9 +252,6 @@ try:
 except:
   print("GPU device not found.")
 ```
-
-    Found GPU at : /device:GPU:0
-
 
 
 ```python
@@ -257,18 +268,16 @@ else:
   use_cuda = False
 ```
 
-    Number of GPU's available : 1
-    GPU device name : Tesla T4
+Here just check how many gpu's do you have and what kind of gpu you are using as it affects the learning process of the network.
 
-
-### Loading MNIST dataset
+**Loading MNIST dataset**
 
 Before creating any CNN network, we will first visualze and do some analysis on our MNIST dataset.
 
 MNIST dataset contains 60,000 training and 10,000 test images. Each image is of size (28x28x1).
 
-We'll use a batch_size of 128 for training.
-The values 0.1307 and 0.3081 used for the Normalize() transformation below are the global mean and standard deviation for MNIST dataset.
+- We'll use a batch_size = 128 for training.
+- The values 0.1307 and 0.3081 used for the Normalize() transformation below are the global mean and standard deviation for MNIST dataset.
 
 Why are we normalizing?
 <b>Geoffrey Hinton's</b> [learning](http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf) about gradient descent: 
@@ -307,31 +316,17 @@ test_loader = torch.utils.data.DataLoader(mnist_testset,
                                           batch_size=batch_size, shuffle=True, **kwargs)
 ```
 
-
-```python
-len(mnist_trainset), len(mnist_testset)
-```
-
-    (60000, 10000)
+The above code will download the MNIST dataset, apply transforms and load the tensors into dataloader.
 
 
-
-### Visualizing the dataset
+**Visualizing the dataset**
 
 Let's see what our data looks like.
-
 
 ```python
 examples = enumerate(train_loader)
 batch_idx, (example_data, example_targets) = next(examples)
 ```
-
-
-```python
-example_data.shape
-```
-    torch.Size([128, 1, 28, 28])
-
 
 train data batch shape : [128, 1, 28, 28]
 
@@ -347,43 +342,47 @@ for i in range(6):
   plt.title(f"Ground Truth : {example_targets[i]}")
 ```
 
+<p align="center">
+<img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/mnist_images.png">
+</p>
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_02/mnist_images.png)
 
+**Building up the model**
 
-### Building up the model
+In the below code, we will write what input size we are getting, what will be the output and what is the receptive field.
 
+Things to keep in mind, we already saw what happens to receptive field size when applying kernel size 3x3 on object, everytime there is an addition of 2. 
+
+But when there is max pooling layer in between, the receptive field doubles. The sentence is not completely true. We will see the effect on receptive field and derive a formula later, as it depends on stride, padding and other factors. So, just go through the post as it is for now. We will learn the concepts slowly.
+
+I want you to understand what is happening in the network.
 
 ```python
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(1, 32, 3, padding=1) #input size, output size, rf
-        self.conv2 = nn.Conv2d(32, 64, 3, padding=1)
-        self.pool1 = nn.MaxPool2d(2, 2)
-        self.conv3 = nn.Conv2d(64, 128, 3, padding=1)
-        self.conv4 = nn.Conv2d(128, 256, 3, padding=1)
-        self.pool2 = nn.MaxPool2d(2, 2)
-        self.conv5 = nn.Conv2d(256, 512, 3)
-        self.conv6 = nn.Conv2d(512, 1024, 3)
-        self.conv7 = nn.Conv2d(1024, 10, 3)
+        self.conv1 = nn.Conv2d(1, 32, 3, padding=1) # input= [128,1,30,30], output = [128,32,28,28], rf = 3
+        self.conv2 = nn.Conv2d(32, 64, 3, padding=1) # input= [128,32,30,30], output = [128,64,28,28], rf = 5
+        self.pool1 = nn.MaxPool2d(2, 2) # input= [128,64,28,28], output = [128,64,14,14], rf = 10
+        self.conv3 = nn.Conv2d(64, 128, 3, padding=1) # input= [128,64,16,16], output = [128,128,14,14], rf = 12
+        self.conv4 = nn.Conv2d(128, 256, 3, padding=1) # input= [128,128,16,16], output = [128,256,14,14], rf = 14
+        self.pool2 = nn.MaxPool2d(2, 2) # input= [128,256,14,14], output = [128,256,7,7], rf = 28
+        self.conv5 = nn.Conv2d(256, 512, 3) # input= [128,256,7,7], output = [128,512,5,5], rf = 30
+        self.conv6 = nn.Conv2d(512, 1024, 3) # input= [128,512,5,5], output = [128,1024,3,3], rf = 32
+        self.conv7 = nn.Conv2d(1024, 10, 3) # input= [128,1024,3,3], output = [128,10,1,1], rf = 34
 
     def forward(self, x):
-        x = F.relu(self.conv1(x))
-        x = F.relu(self.conv2(x))
-        x = self.pool1(x)
-        x = F.relu(self.conv3(x))
-        x = F.relu(self.conv4(x))
-        x = self.pool2(x)
-        x = F.relu(self.conv5(x))
-        x = F.relu(self.conv6(x))
+        x = self.pool1(F.relu(self.conv2(F.relu(self.conv1(x)))))
+        x = self.pool2(F.relu(self.conv4(F.relu(self.conv3(x)))))
+        x = F.relu(self.conv6(F.relu(self.conv5(x))))
         x = F.relu(self.conv7(x))
-        x = x.view(-1, 10)
+        x = x.view(-1, 10) # [128,10]
         return F.log_softmax(x)
 ```
 
-### The architecture
+Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? when you find the solution, I have included below link of code to run.
 
+**The architecture**
 
 ```python
 from torchsummary import summary
@@ -415,50 +414,25 @@ summary(model, input_size=(1, 28, 28))
     Estimated Total Size (MB): 25.85
     ----------------------------------------------------------------
 
-
-    /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:25: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
-
-
-### Visualization of kernels and channels
+torchsummary is very nice package that will give us output layer size and parameters information. You see there are total 6,379,786 learnable parameters. We will go around optimizing the code in future posts. 
 
 
-```python
-model.conv1.weight.data.cpu().numpy().shape
-```
-
-
-
-
-    (32, 1, 3, 3)
-
-
+**Training the model**
 
 
 ```python
-from torchvision.utils import make_grid
+from tqdm import tqdm #progress bar
 
-def visualize_tensor(tensor):
-  tensor = tensor - tensor.min()
-  tensor = tensor / tensor.max()
-  img = make_grid(tensor)
-  plt.imshow(img.permute(1,2,0))
-```
-
-### Training the model
-
-
-```python
-from tqdm import tqdm
 def train(model, device, train_loader, optimizer, epoch):
     model.train()
     pbar = tqdm(train_loader)
     for batch_idx, (data, target) in enumerate(pbar):
-        data, target = data.to(device), target.to(device)
+        data, target = data.to(device), target.to(device) #training of the device
         optimizer.zero_grad()
-        output = model(data)
-        loss = F.nll_loss(output, target)
-        loss.backward()
-        optimizer.step()
+        output = model(data) # prediction
+        loss = F.nll_loss(output, target) # calculate loss
+        loss.backward() # backpropagtion step
+        optimizer.step() # updating the parameters
         pbar.set_description(desc= f'loss={loss.item()} batch_id={batch_idx}')
 
 
@@ -483,53 +457,19 @@ def test(model, device, test_loader):
 
 
 ```python
+# SGD : stochastic gradient descent, lr:lerning_rate:0.01
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 
-for epoch in range(1, 2):
+for epoch in range(1, 2): # training network on 1 epoch
     train(model, device, train_loader, optimizer, epoch)
-    
-    k1 = model.conv1.weight.data.cpu().clone()
-    visualize_kernel(k1)
-
-    activation = {}
-    def get_activation(name):
-      def hook(model, input, output):
-        activation[name] = output.detach()
-      return hook
-
-    model.conv1.register_forward_hook(get_activation('conv1'))
-    o1 = activation['conv1']
-    visualize_tensor(o1)
-
-
-    # test(model, device, test_loader)
+    test(model, device, test_loader)
 ```
 
-      0%|          | 0/469 [00:00<?, ?it/s]/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:25: UserWarning: Implicit dimension choice for log_softmax has been deprecated. Change the call to include dim=X as an argument.
-    loss=0.6927734017372131 batch_id=468: 100%|██████████| 469/469 [00:12<00:00, 36.63it/s]
+You might be getting very low accuracy on test dataset. This shouldn't happen. Find the error above and comment below.
 
+I have included colab notebook [link](https://gist.github.com/myselfHimanshu/b9f9f024c14eaa87a271172746b79eac). Run and play around.
 
+Stay tuned, Happy Learning!!!
 
-    ---------------------------------------------------------------------------
+If you feel that I can provide you with value, I encourage you to connect with me, follow me, add me to your circles etc.
 
-    KeyError                                  Traceback (most recent call last)
-
-    <ipython-input-64-fc4779b0fb46> in <module>()
-         14 
-         15     model.conv1.register_forward_hook(get_activation('conv1'))
-    ---> 16     o1 = activation['conv1']
-         17     visualize_tensor(o1)
-         18 
-
-
-    KeyError: 'conv1'
-
-
-
-![png](output_34_2.png)
-
-
-
-```python
-
-```
