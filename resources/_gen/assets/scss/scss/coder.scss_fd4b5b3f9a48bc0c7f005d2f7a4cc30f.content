@@ -310,7 +310,7 @@ img {
   height: 6.0rem;
   width: 100%;
   z-index: 1000;
-  background-color: #fafafa; }
+  background-color: #ffffff; }
   .navigation a, .navigation span {
     display: inline;
     font-size: 1.6rem;
