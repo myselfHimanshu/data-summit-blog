@@ -1,7 +1,7 @@
 +++
-draft = true
-date = 2020-01-26T22:22:22+05:30
-title = "Fibonacci Series"
+draft = false
+date = 2019-11-06T12:31:51+05:30
+title = "Fibonacci Numbers Series"
 slug = ""
 tags = ["ALGORITHMS"]
 categories = []
@@ -194,5 +194,3 @@ if __name__ == '__main__':
     from_, to = map(int, input_.split())
     print(fibonacci_partial_sum(from_, to))
 ```
-
-<hr>

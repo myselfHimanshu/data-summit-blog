@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2019-02-22T22:22:22+05:30
+date = 2020-11-06T10:22:19+05:30
 title = "Sequence Model Part 2 : Word Embeddings"
 slug = ""
 tags = ["NLP","RNN"]
@@ -33,14 +33,14 @@ Food|0.02|0.01|0.02|0.01|0.95|0.97
 We can come up with many features(the rows) let say we have 300 features, then this 300 dimension vector of value in columns becomes our representation.
 
 To visualize this representation we use *t-SNE* algo to reduce the features to 2-dimension
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_1.png)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_1.png?raw=true)
 
 We can see the related words are grouped together.
 
 **Using Word Embeddings**
 
 Given a named-entity recognition problem.
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_2.png)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_2.png?raw=true)
 
 In this example *Sally Johnson* is a person name. And one way to know that it is person name and not organization is that *orange farmer* is a person. Suppose now we have our trained model using featurized word embeddings.
 
@@ -82,7 +82,7 @@ We can also use Euclidean distance as a similarity function.
 *How do we learn the embedding matrix?*
 
 First look at this diagram.
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_4.png)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_4.png?raw=true)
 
 Here we need to predict the next word so we use neural network to build the language model.
 
@@ -172,13 +172,13 @@ The model to minimize is defined:
 
 Given a sentence or review we need to classify the ratings.
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_5.png)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_5.png?raw=true)
 
 For this problem we might not have very large corpus but we can use pre-trained embedding vectors and it will work.
 
 *Simple Sentiment classification model*
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_6.png)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_6.png?raw=true)
 
 - The embedding matrix may have been trained on say 100B words.
 - Dimension of word embedding is 300.
@@ -189,7 +189,7 @@ This simple model will work for short sentences but doesn't take order of words 
 *RNN for sentiment classification*
 
 The many to one architecture:
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/part2_7.png)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/part2_7.png?raw=true)
 
 This model will take the *lacking in good* into account and this model will also generalize better even if words weren't in our dataset.
 

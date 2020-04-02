@@ -1,21 +1,86 @@
-baseURL = "https://myselfHimanshu.github.io/"
-languageCode = "en-us"
-title = "Data Summit"
-theme = "hyde"
+baseurl = "https://myselfhimanshu.github.io/"
+title = "Himanshu Panwar"
 
-PygmentsCodeFences = true
-PygmentsStyle = "monokai"
+theme = "hugo-coder"
+
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsstyle = "b2"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
 
 disqusShortname = "myselfhimanshu-github-io"
 
-[Menus]
-  main = [
-      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/047himanshu/"},
-      {Name = "Github", URL = "https://github.com/myselfhimanshu/"},
-      {Name = "Twitter", URL = "https://twitter.com/047himanshu"}
-  ]
-
-
 [params]
-  #description = "I am Deep Learning practioner. I blog about Machine Learning, Deep Learning, Computer Vision and Natural Language Processing."
-  description = "Everything started as nothing."
+    author = "Himanshu Panwar"
+    info = "Software Developer | Machine Learning & NLP Apprentice"
+    description = "Himanshu's personal website"
+    keywords = "blog,developer,personal"
+    avatarurl = "./images/avatar.png"
+
+    favicon_32 = "/img/favicon-32x32.png"
+    favicon_16 = "/img/favicon-16x16.png"
+
+    footercontent = "We don't want to die without any scars."
+
+    hidecredits = true
+    hidecopyright = false
+
+    snsShare = true
+
+    rtl = false
+
+    math = true
+    custom_css = ["css/custom.css"]
+
+
+# Social links
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/myselfHimanshu/"
+[[params.social]]
+    name = "Bitbucket"
+    icon = "fab fa-bitbucket fa-2x"
+    weight = 2
+    url = "https://bitbucket.org/himanshu_/"
+[[params.social]]
+    name = "Twitter"
+    icon = "fab fa-twitter fa-2x"
+    weight = 3
+    url = "https://twitter.com/047himanshu"
+[[params.social]]
+    name = "Linkedin"
+    icon = "fab fa-linkedin fa-2x"
+    weight = 4
+    url = "https://www.linkedin.com/in/047himanshu/"
+
+[languages]
+    [languages.en]
+        languagename = "English"
+
+        [[languages.en.menu.main]]
+        name = "About"
+        weight = 1
+        url = "/about/"
+
+        [[languages.en.menu.main]]
+        name = "Blog"
+        weight = 2
+        url = "/posts/"
+
+        [[languages.en.menu.main]]
+        name = "Projects"
+        weight = 3
+        url = "/projects/"
+
+        [[languages.en.menu.main]]
+        name = "Contact me"
+        weight = 5
+        url = "/contact/"
+

@@ -1,5 +1,5 @@
 +++
-draft = true
+draft = false
 date = 2020-02-17T11:15:02+05:30
 title = "Statistics and Probability"
 slug = ""
@@ -31,7 +31,7 @@ Here if we are asked which ones are individuals and how many variables are there
 This is used at the time of exploring the dataset. It contains information like bias, variance, mean, median, percentiles etc.
 The best way to get these information is to plot a boxplot. It's a standard way of displaying the distribution of data.
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/boxplot.png)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/boxplot.png?raw=true)
 
 If boxplot is small then it means that many values are same or in a small range, if it is tall that means out data points are different. If the median value is closer to bottom that means most of the data have lower values which means if the median value is not around middle of the box then we have skewed data.  
 
@@ -94,7 +94,7 @@ P(B) : The probability of 'B' being True.<br>
 
 Random Variable : whose possible values are outcomes of a random phenomenon.
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/continuous-variable.jpg)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/continuous-variable.jpg?raw=true)
 
 *Uniform Distribution*<br>
 A uniform distribution, sometimes also known as a rectangular distribution, is a distribution that has constant probability.
@@ -102,7 +102,7 @@ A uniform distribution, sometimes also known as a rectangular distribution, is a
 *Normal Distribution*<br>
 Data can be "distributed" (spread out) in different ways. But there are many cases where the data tends to be around a central value with no bias left or right, and it gets close to a "Normal Distribution" like this:
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/bell-curve.jpg)
+![](https://github.com/myselfHimanshu/Portfolio-Website/blob/master/images/bell-curve.jpg?raw=true)
 
 **Skewness**<br>
 It is the degree of distortion from the symmetrical bell curve or the normal distribution.

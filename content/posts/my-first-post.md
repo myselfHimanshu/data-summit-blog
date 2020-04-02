@@ -1,5 +1,5 @@
 +++
-draft = true
+draft = false
 date = 2019-11-05T19:20:13+05:30
 title = "My First Blog Post : Algorithm"
 slug = ""
@@ -66,5 +66,3 @@ for i in range(n):
 print(max1 * max2)
 
 ```
-
-<hr>

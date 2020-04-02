@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2019-02-02T22:22:22+05:30
+date = 2020-01-01T14:26:21+05:30
 title = "Setting Up Paperspace for Deep Learning"
 slug = ""
 tags = ["DeepLearning"]
