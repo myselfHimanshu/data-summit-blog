@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2019-11-05T19:20:13+05:30
+date = 2018-11-05T19:20:13+05:30
 title = "My First Blog Post : Algorithm"
 slug = ""
 tags = ["ALGORITHMS"]

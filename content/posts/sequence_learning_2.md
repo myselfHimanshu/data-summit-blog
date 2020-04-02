@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2020-11-06T10:22:19+05:30
+date = 2019-11-10T10:22:19+05:30
 title = "Sequence Model Part 2 : Word Embeddings"
 slug = ""
 tags = ["NLP","RNN"]

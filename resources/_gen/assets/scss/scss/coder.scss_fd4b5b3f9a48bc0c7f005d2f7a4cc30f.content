@@ -9,7 +9,7 @@ html {
 
 body {
   color: #212121;
-  background-color: #FAFAFA;
+  background-color: white;
   font-family: Merriweather, Georgia, serif;
   font-size: 1.6em;
   font-weight: 300;
@@ -310,7 +310,7 @@ img {
   height: 6.0rem;
   width: 100%;
   z-index: 1000;
-  background-color: #ffffff; }
+  background-color: #fafafa; }
   .navigation a, .navigation span {
     display: inline;
     font-size: 1.6rem;
@@ -339,7 +339,7 @@ img {
         padding: 0;
         max-height: 0;
         width: 100%;
-        background-color: #FAFAFA;
+        background-color: white;
         border-top: solid 2px #E0E0E0;
         border-bottom: solid 2px #E0E0E0;
         transition: opacity 0.25s, max-height 0.15s linear; } }

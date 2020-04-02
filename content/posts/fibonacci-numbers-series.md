@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2019-11-06T12:31:51+05:30
+date = 2018-11-06T12:31:51+05:30
 title = "Fibonacci Numbers Series"
 slug = ""
 tags = ["ALGORITHMS"]

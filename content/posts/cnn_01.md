@@ -14,9 +14,10 @@ I am starting this series of posts, where in we'll build on background knowledge
 
 Ready ? Let's jump in.
 
-![](https://media.giphy.com/media/kgFZ6dOUGnYBO/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/kgFZ6dOUGnYBO/giphy.gif">
+</p>
 
-<hr>
 
 Convolutional Neural Networks are very similar to ordinary Neural Networks. 
 
@@ -26,7 +27,7 @@ Convolutional Neural Networks are very similar to ordinary Neural Networks.
 
 The complete network expresses a single differentiable score function.
 
-<i>So why not use a normal Neural Network? </i>
+**So why not use a normal Neural Network?**
 
 Images used in these kind of problems are often 224x224 or larger sizes. Imagine building a neural network to process 224x224 color images. That will be
 
@@ -40,8 +41,9 @@ $$ 150528 * 1024 \approx 154M $$
 
 150+ million parameters for the first layer only. 
 
-![](https://media.giphy.com/media/keZhECYHtGty4Jh1Vo/giphy.gif)
-
+<p align="center">
+  <img src="https://media.giphy.com/media/keZhECYHtGty4Jh1Vo/giphy.gif">
+</p>
 
 The next reason is that positions can change. You want your network to detect a dog in an image irrespective of where it is. What I mean is, a dog can be in a corner of image or small dog or whether it is a close-up shot.
 These kind of images, would not activate the same neurons in the network, so network would react differently.   
@@ -55,7 +57,9 @@ ConvNet architectures make the explicit assumption that the inputs are images. T
 
 Here, check out this image.
 
-![](https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/08/eb7ff9947f527a2e84d7f06e79138b82.png)
+<p align="center">
+  <img src="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/08/eb7ff9947f527a2e84d7f06e79138b82.png">
+</p>
 
 The above image is a black and white image, with color grids on it. Zoom out and in to see the magic. 
 
@@ -65,14 +69,17 @@ The above image is a black and white image, with color grids on it. Zoom out and
 
 Every image can be represented as a matrix of pixel values.
 
-<img src="https://www.apsl.net/media/apslweb/images/gif-8.original.gif" style="width:150px;height:150px;" />
-
+<p align="center">
+  <img width="250" height="250" src="https://www.apsl.net/media/apslweb/images/gif-8.original.gif">
+</p>
 
 ### What are Channels ?
 
 Channel is a convolutional term used to refer to certain feature of an image. In practicality, an image from standard digital camera will have 3 channels (RGB (red, green, blue)). An image printed on a newspaper has 4 channels (CMYK). You can imagine three 2d matrices over each other, each having pixels values in range of [0,255].
 
-![](https://static.packt-cdn.com/products/9781789613964/graphics/e91171a3-f7ea-411e-a3e1-6d3892b8e1e5.png)
+<p align="center">
+  <img src="https://static.packt-cdn.com/products/9781789613964/graphics/e91171a3-f7ea-411e-a3e1-6d3892b8e1e5.png">
+</p>
 
 A grayscale image, has just one channel. The value of each pixel in the matrix ranges from 0 to 255 – zero indicating black and 255 indicating white.
 
@@ -86,6 +93,7 @@ You shouldn't worry about RGB or CMYK specific channels. They are just like metr
 
 Working on a specific color feature may be useful when you are asking a question to the network like, find me all yellow color flowers.
 
+> What is a channel? <br>
 > A channel is set of relatable features.
 
 ><b>Channel</b> Synonym :<br>
@@ -93,13 +101,14 @@ Working on a specific color feature may be useful when you are asking a question
 
 Let's take this image as an example to explain what a channel can be.
 
-![](https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/2QQOex4/deep-learning-animated-word-cloud_s8oppv-il_thumbnail-full07.png)
+<p align="center">
+  <img src="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/2QQOex4/deep-learning-animated-word-cloud_s8oppv-il_thumbnail-full07.png">
+</p>
 
 Now imagine that we have 26 channels for the given image. Let's say our channels are A-Z, as there are 26 alphabets so 26 channels.
 
-
-- Channel A : where in all the <i>a</i> s from image are filtered out (wherever they are and however they are, just <i>a</i>s )
-- Channel B : where in all the <i>b</i> s from image are filtered out.
+- Channel A : where in all the a from image are filtered out (wherever and however they are, just a )
+- Channel B : where in all the b from image are filtered out.
 - and so on, till Channel Z.
 
 
@@ -114,8 +123,6 @@ Now, when I asked you to filter out just <i>a</i> or extract just a single alpha
 > <i>weights</i> 
 
 > Each filter gives us a channel. <br>
-> What is a channel? <br>
-> >Channel is a set of relatable features.
 
 ### Building blocks of Convolutional Neural Network
 
@@ -131,43 +138,56 @@ similarly in vision,
 
 Look at below image, how does a network learn to identify each block that is mentioned above step by step.
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_01_01.png)
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_01_01.png">
+</p>
 
 ### What are gradients and edges ? 
 
 We refer `gradient` as change in brightness over a series of pixels. 
 
-<img src="https://huaxin.cl/wp-content/uploads/2018/09/gradient-black-to-white-wallpaper-4.jpg" style="zoom:15%;" align="middle"/>
+<p align="center">
+  <img width="500" height="180" src="https://huaxin.cl/wp-content/uploads/2018/09/gradient-black-to-white-wallpaper-4.jpg">
+</p>
 
 The above image is linear gradient from black to white. This gradient is smooth and we wouldn't say there is edge in this image. Edges are a bit fuzzy in above image. In real objects those `edges` can be found by looking at sharp transitions. You can find edges in the image below
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%C3%84%C3%A4retuvastuse_n%C3%A4ide.png/500px-%C3%84%C3%A4retuvastuse_n%C3%A4ide.png)
-
+<p align="center">
+  <img width="500" height="180" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/%C3%84%C3%A4retuvastuse_n%C3%A4ide.png/500px-%C3%84%C3%A4retuvastuse_n%C3%A4ide.png">
+</p>
 
 ### What is Convolution ?
 
 Convolution takes care of spatial relationship between pixels by learning features from input image.
 Let's see, what human eyes sees and what machine sees when looking at an image.
 
-![](https://ai.stanford.edu/~syyeung/cvweb/Pictures1/imagematrix.png)
+<p align="center">
+  <img src="https://ai.stanford.edu/~syyeung/cvweb/Pictures1/imagematrix.png">
+</p>
 
 - First image is what you see; 
 - Second image is how an image is interpreted (matrix of pixels values); 
 - Third image is what machine sees ( n x n matrix of numbers).
 
-<i> How does convolution preserves spatial relationship ? </i>
+**How does convolution preserves spatial relationship ?**
 
 Consider, a 5x5 image whose pixel values are only 0 an 1.
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image1.png)
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image1.png">
+</p>
 
 and also conside 3 x3 matrix as shown below
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image2.png)
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image2.png">
+</p>
 
 Then, convolution of 5x5 image and 3x3 image can be computed as shown below : 
 
-![](https://icecreamlabs.com/wp-content/uploads/2018/08/33-con.gif) 
+<p align="center">
+  <img src="https://icecreamlabs.com/wp-content/uploads/2018/08/33-con.gif">
+</p>
 
 Let's understand what is happening ? How the computation is being processed ?
 
@@ -177,7 +197,9 @@ There are some terminologies for each step that is happening above.
 
 Suppose we have blue box as our image and the dark patch as our yellow matrix and white box as our convolved feature matrix.
 
-![](https://cdn-images-1.medium.com/max/1024/1*Fw-ehcNBR9byHtho-Rxbtw.gif)
+<p align="center">
+  <img src="https://cdn-images-1.medium.com/max/1024/1*Fw-ehcNBR9byHtho-Rxbtw.gif">
+</p>
 
 The blue object is your image of size (5x5) ( 5 is your width and height) , the dark patch that you see is our `kernel`, which is initialized with random values.
 
@@ -193,26 +215,23 @@ These kernels are initialised with random values in the beginning. These values 
 
 Consider another image,
 
-![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image11.png)
+<p align="center">
+  <img src="https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image11.png">
+</p>
 
 Let's see effect of different filters over above image,
 
 | Operation | Filter | Convolved Image|
 | :-----: | :-----: | :-----: |
-|Identity|$$\begin{pmatrix}0 & 0 & 0\\\ 0 & 1 & 0\\\0 & 0 & 0\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image11.png)
-|
-|Vertical Edge|$$\begin{pmatrix}-1 & 0 & 1\\\ -1 & 0 & 1\\\ -1 & 0 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image7.png)
-|
-|Horizontal Edge|$$\begin{pmatrix}-1 & -1 & -1\\\ 0 & 0 & 0\\\1 & 1 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image8.png)
-|
-|Horizontal Edge Sharpen|$$\begin{pmatrix}-4 & -4 & -4\\\ 0 & 0 & 0\\\ 4 & 4 & 4\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image9.png)
-|
-|Blured Edge|$$ \frac19 \begin{pmatrix}1 & 1 & 1\\\ 1 & 1 & 1\\\1 & 1 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image10.png)
-|
+|Identity|$$\begin{pmatrix}0 & 0 & 0\\\ 0 & 1 & 0\\\0 & 0 & 0\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image11.png)|
+|Vertical Edge|$$\begin{pmatrix}-1 & 0 & 1\\\ -1 & 0 & 1\\\ -1 & 0 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image7.png)|
+|Horizontal Edge|$$\begin{pmatrix}-1 & -1 & -1\\\ 0 & 0 & 0\\\1 & 1 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image8.png)|
+|Horizontal Edge Sharpen|$$\begin{pmatrix}-4 & -4 & -4\\\ 0 & 0 & 0\\\ 4 & 4 & 4\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image9.png)|
+|Blured Edge|$$ \frac19 \begin{pmatrix}1 & 1 & 1\\\ 1 & 1 & 1\\\1 & 1 & 1\end{pmatrix}$$|![](https://github.com/myselfHimanshu/data-summit-blog/raw/master/images/cnn_blog_01/image10.png)|
 
 In practice, a CNN learns the values of these filters during training process.
 
-See what's happening ? 
+**See what's happening ?**
 
 Vertical edge filter detects vertical edges and horizontal edge filter detects horizontal edges. A bright pixel in output image indicates that there is strong edge around there in original image.
 
@@ -247,11 +266,11 @@ Now coming to some mathematical concepts.
 
 So I can say, convolving with 5x5 kernel is same as convolving with 3x3 kernel (twice).
 
-Now the question arises is, <i>What size kernel to use ? </i> 
+Now the question arises is, **What size kernel to use ?**
 
 The answer to above question lies in another question, 
 
-<i>How many parameters we have to train on if we use 3x3 or 5x5 kernel?</i>
+**How many parameters we have to train on if we use 3x3 or 5x5 kernel?**
 
  Look at the table below which will tell you about total number of parameters to train if we use n x n size kernel.
 
@@ -270,7 +289,7 @@ There will be tradeoffs between parameters and result. But we need to come up wi
 
 In many other blogs or research papers, you might see researchers using odd shaped kernel.
 
-<i>Is it necessary to just use odd number shaped kernel?</i> 
+**Is it necessary to just use odd number shaped kernel?** 
 
 It make sense to have our kernel odd shaped because it has axies of symmetry. 
 
@@ -284,7 +303,9 @@ This is one of most important concept in CNNs.
 
 > A receptive field is defined as region in the input that a particular CNNs feature is looking at.
 
-![](https://www.researchgate.net/publication/316950618/figure/fig4/AS:495826810007552@1495225731123/The-receptive-field-of-each-convolution-layer-with-a-3-3-kernel-The-green-area-marks.png)
+<p align="center">
+  <img src="https://www.researchgate.net/publication/316950618/figure/fig4/AS:495826810007552@1495225731123/The-receptive-field-of-each-convolution-layer-with-a-3-3-kernel-The-green-area-marks.png">
+</p>
 
 Let's say Layer1 is your image of size 5x5 and green color matrix is your kernel of size 3x3. 
 
@@ -301,7 +322,7 @@ So, the `local receptive field` of that cell is 3.
 - Now If I ask the yellow cell from Layer3, how many cells it can see ? 
     - Answer : "I have seen the whole image". 
 
-<i>Wondering how ? </i>
+**Wondering how ?**
 
 A 5x5 kernel might have seen the whole image and as explained earlier, using 3x3 kernel (twice) is similar to using 5x5 kernel. So, the `global receptive field` of that yellow cell from Layer3 will be full 5x5 image and the local receptive field of a cell will always be the size of kernel. 
 
@@ -337,7 +358,9 @@ But some problems cannot be solved by this technique efficiently because of comp
 
 To solve such problems, we use non-deterministic algorithms.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Difference_between_deterministic_and_Nondeterministic.svg/950px-Difference_between_deterministic_and_Nondeterministic.svg.png)
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Difference_between_deterministic_and_Nondeterministic.svg/950px-Difference_between_deterministic_and_Nondeterministic.svg.png">
+</p>
 
 A deterministic algorithm that performs f(n) steps always finishes in f(n) steps and always returns the same result. A non deterministic algorithm that has f(n) levels might not return the same result on different runs. A non deterministic algorithm may never finish due to the potentially infinite size of the fixed height tree.
 
@@ -350,8 +373,8 @@ The process of finding solution is incremental, starting from a point in sapce o
 Neural Networks are trained using these kind of algorithms. 
 
 > Training algorithms for deep learning models are usually iterative in nature and thus require the user to specify some initial point from which to begin the iterations. Moreover, training deep models is a sufficiently difficult task that most algorithms are strongly affected by the choice of initialization.<br>
-> Perhaps the only property known with complete certainty is that the initial parameters need to `break symmetry` between diﬀerent units. If two hidden units with the same activation function are connected to the same inputs, then these units must have diﬀerent initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic constant model will constantly update both of these units in the same way.
-- page 296,297, [deep learning book](https://www.deeplearningbook.org/contents/optimization.html).
+
+> Perhaps the only property known with complete certainty is that the initial parameters need to break symmetry between diﬀerent units. If two hidden units with the same activation function are connected to the same inputs, then these units must have diﬀerent initial parameters. If they have the same initial parameters, then a deterministic learning algorithm applied to a deterministic constant model will constantly update both of these units in the same way. <br> - page 296,297, [deep learning book](https://www.deeplearningbook.org/contents/optimization.html).
 
 A careful initialization of the network can speed up the learning process.
 

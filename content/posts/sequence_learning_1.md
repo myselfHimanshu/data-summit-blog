@@ -1,6 +1,6 @@
 +++
 draft = false
-date = 2020-11-05T21:46:34+05:30
+date = 2019-11-03T21:46:34+05:30
 title = "Sequence Model Part 1 : RNNS"
 slug = ""
 tags = ["NLP","RNN"]
