@@ -20,7 +20,7 @@ disqusShortname = "myselfhimanshu-github-io"
     info = "Software Developer | Machine Learning & NLP Apprentice"
     description = "Himanshu's personal website"
     keywords = "blog,developer,personal"
-    avatarurl = "./images/avatar.png"
+    avatarurl = "images/avatar.png"
 
     favicon_32 = "/img/favicon-32x32.png"
     favicon_16 = "/img/favicon-16x16.png"
