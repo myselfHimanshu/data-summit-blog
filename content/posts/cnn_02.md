@@ -380,7 +380,7 @@ class Net(nn.Module):
         return F.log_softmax(x)
 ```
 
-Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? when you find the solution, I have included below link of code to run.
+Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? I have also included the link of code at the end of post.
 
 **The architecture**
 
