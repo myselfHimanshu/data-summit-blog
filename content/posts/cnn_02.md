@@ -140,7 +140,9 @@ We have an image of size 400x400x3. Let's us assume we add 32 kernels in the fir
 
 Look at this animation and then we will look at the proper representation of our network.
 
-![](https://thumbs.gfycat.com/JointFewAmericancreamdraft-size_restricted.gif)
+<p align="center">
+<img src="https://thumbs.gfycat.com/JointFewAmericancreamdraft-size_restricted.gif">
+</p>
 
 > Every kernel gives its own channel.
 > Our kernels must have an equal number of channels as in the input channel.
