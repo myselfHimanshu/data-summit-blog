@@ -13,13 +13,15 @@ pygmentsstyle = "b2"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
+
+googleAnalytics = "UA-162762722-1"
 disqusShortname = "myselfhimanshu-github-io"
 
 [params]
     author = "Himanshu Panwar"
-    info = "Software Developer | Machine Learning & NLP Apprentice"
-    description = "Himanshu's personal website"
-    keywords = "blog,developer,personal"
+    info = "Software Developer | Deep Learning Engineer | Computer Vision & NLP Apprentice"
+    description = "Document my personal notes on Computer Vision, Natural Language Processing and Deep Learning"
+    keywords = "blog,developer,personal,deep learning,vision,nlp,notes"
     avatarurl = "images/avatar.png"
 
     favicon_32 = "/img/favicon-32x32.png"
