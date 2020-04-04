@@ -3,7 +3,7 @@ draft = false
 date = 2019-11-03T21:46:34+05:30
 title = "Sequence Model Part 1 : RNNS"
 slug = ""
-tags = ["NLP","RNN"]
+tags = ["NLP","RNN","DeepLearning"]
 categories = []
 math = "true"
 +++

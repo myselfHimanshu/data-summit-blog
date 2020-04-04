@@ -20,7 +20,7 @@ disqusShortname = "myselfhimanshu-github-io"
 [params]
     author = "Himanshu Panwar"
     info = "Deep Learning Engineer | Computer Vision & NLP Apprentice"
-    description = "Document my personal notes on Computer Vision, Natural Language Processing and Deep Learning"
+    description = "Documenting personal notes on Computer Vision, Natural Language Processing and Deep Learning"
     keywords = "blog,developer,personal,deep learning,vision,nlp,notes"
     avatarurl = "images/avatar.png"
 

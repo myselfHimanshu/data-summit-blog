@@ -3,7 +3,7 @@ draft = false
 date = 2019-11-10T10:22:19+05:30
 title = "Sequence Model Part 2 : Word Embeddings"
 slug = ""
-tags = ["NLP","RNN"]
+tags = ["NLP","RNN","DeepLearning"]
 categories = []
 math = "true"
 +++

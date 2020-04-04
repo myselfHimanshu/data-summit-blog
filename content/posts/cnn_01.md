@@ -3,7 +3,7 @@ draft = false
 date = 2020-03-22T22:22:22+05:30
 title = "Convolutional Neural Network Part 1 : Basis Concepts"
 slug = ""
-tags = ["CNN"]
+tags = ["CNN","DeepLearning"]
 categories = []
 math = "true"
 +++
