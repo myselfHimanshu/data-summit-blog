@@ -1,7 +1,7 @@
 +++
 draft = false
 date = 2020-03-22T22:22:22+05:30
-title = "Convolutional Neural Network Part 1 : Basis Concepts"
+title = "Convolutional Neural Network Part 1 : Basic Concepts"
 slug = ""
 tags = ["CNN","DeepLearning"]
 categories = []
@@ -9,6 +9,8 @@ math = "true"
 +++
 
 I am starting this series of posts, where in we'll build on background knowledge of neural networks and explore what CNNs are. We will cover from basic understanding of how and what is CNN, augumentation techniques, architectures of CNNs, training an object detection model and more. Before moving forward, I recommend you to learn some basic terminologies of neural networks and how they work.
+
+I’ll try to explain the concepts in layman terms. We’ll slowly build our knowledge base. Trust me if you are interested in computer vision, you don’t want to be just an engineer who takes pre-defined code, run the model and be done with it. We are Deep Learning Engineers.
 
 > If you're offered a seat on a rocket ship, don't ask what seat! Just get on.
 

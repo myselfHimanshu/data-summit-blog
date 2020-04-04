@@ -10,9 +10,9 @@ math = "true"
 
 In this tutorial, we will be training the network on MNIST dataset.  We'll try to understand neural network architecture. 
 
-The most important thing to understand in deep learning is what goes in and what comes out, with the understanding of what the network is doing inside that black box. Here black box refers to the hidden layers of DNN. What is it seeing first and at the end of the training the model.
+The most important thing to understand in deep learning is what is our network learning which requires understanding of the network architecture. The below architecture is not meant to give us very good score. In this post we'll focus on few more concepts and then jump into pytorch-101.
 
-The below architecture is not meant to give us very good score. In this series we'll only focus on pytorch-101. To understand the basic terminologies of CNN building blocks. Kindly go through this post.
+To understand the basic terminologies of CNN building blocks. Kindly go through this post.
 
 [CNN Part 1 : Basic Concepts](https://myselfhimanshu.github.io/posts/cnn_01/)
 
@@ -40,6 +40,12 @@ You can think padding as extra rows and columns of pixels that are applied aroun
 In the above image, we have a feature map of 5x5, if we apply a padding=1, we add a row and a column around that feature map. This feature map will result in size of 7x7 now on which we apply convolution.
 
 It is not necessary to apply padding with value 0, as shown in the image. We will see what padding should we apply such that we can gain more information from around the corners of the feature map.
+
+**Why do we need Padding?**
+
+- It's easier to design networks if we preserve the height and width and don't have to worry too much about tensor dimensions when going from one layer to another.
+- It allows us to design deeper networks. Without padding, reduction in volume size would reduce too quickly.
+- Padding improves performance by keeping information at the borders.
 
 Now, in the last post we have calculated how many layers we have to use if we use 3x3 kernel on a 401x401 image size with stride=1 and padding=0?
 
@@ -110,7 +116,9 @@ This is just a concept, don't worry I'll explain in future posts if it arrives. 
 
 There are other invariances like, rotational invariance, scale invariance. Right now, we are not going in depth of these terminologies.
 
-Coming back to the question, **How many layers do I need now when I add maxpooling layer?**
+Coming back to the question, 
+
+**How many layers do I need now when I add maxpooling layer?**
 
 Given:
 
@@ -138,7 +146,7 @@ Now, lets understand the concept of channels once again. In last post we have us
 
 We have an image of size 400x400x3. Let's us assume we add 32 kernels in the first layer, 64 in second, 128 in thrid and so on.
 
-Look at this animation and then we will look at the proper representation of our network.
+Look at this animation, think what is happening and then we will look at the proper representation of our network.
 
 <p align="center">
 <img src="https://thumbs.gfycat.com/JointFewAmericancreamdraft-size_restricted.gif">
@@ -162,17 +170,19 @@ So, our network will look like,
 
 Let's understand how convolution process is taking place using the above architecture.
 
-If we have an object with 3 channels, there should be 1 kernels of size (3x3x3) where last index value 3 are channels of the kernel.
+If we have an object with 3 channels, and convolving it using 1 kernel, then the size of that kernel is (3x3x3), where last index value 3 are channels of the kernel.
 
 Look at image below, to understand how multi channels are handled.
 
 ![](https://miro.medium.com/max/1440/1*ciDgQEjViWLnCbmX-EeSrA.gif)
 
-Do you see each kernel has it's own channel. Now we have another problem.
+Do you see each kernel has its own channel. And the convolution of 1 (3x3) kernel on (5x5x3) image will give me (3x3x1) output object.
+
+Now we have another problem.
 
 **How many parameters are we initializing ?**
 
-Let's go through the network again,
+Let's go through the network again, this is the proper representation of the network architecture,
 
 |Object Size|Kernel Size|Output Size|Parameters|
 |----|----|----|----|
@@ -190,11 +200,13 @@ Let's go through the network again,
 
 From the above table, we have kernels as 32,64,128,256,512. So, how do I know whether my 512 channels are enough for my network to learn? Answer is we don't know, we need to experiment with these numbers.
 
-Now, look at kernel size of 5th layer. We have (3x3x256)x512 as our kernel size. In 6th layer we have like 23M parameters. These increasing number of parameters can really slow down the networks learning process.
+Now, look at kernel size of 5th layer. We have (3x3x256)x512 as our kernel size. In 6th layer we have like 23M parameters.
 
 > The kernel size = number of learnable parameters
 
-We have asked our network to learn 23M parameters just in 6th layer. Are you able to see what's happening. The more we add these parameters and ask our network to learn, the more it will slow down.
+We have asked our network to learn 23M parameters just in 6th layer. Are you able to see what's happening. The more we add these parameters and ask our network to learn, the more it will slow down. These increasing number of parameters can really slow down the networks learning process.
+
+I am not telling, a network won't be able to learn. Here the processing time is dependent on your machine. 
 
 If you are very very rich person who can buy expensive GPUs, you can add any number of parameters in the network.
 
@@ -202,7 +214,7 @@ If you are very very rich person who can buy expensive GPUs, you can add any num
 <img src="https://media.giphy.com/media/JpG2A9P3dPHXaTYrwu/giphy.gif">
 </p>
 
-Training your network on K80 GPU will be slower than V100 GPU or any higher gpu model series.
+Training your network on K80 GPU will be slower than V100 GPU or any higher gpu model series because of its compute power.
 
 **What's the solution?**
 
@@ -220,6 +232,9 @@ For this post, we will continue with code now!!! Some hands on experience is nec
 
 # Into the Code
 
+We'll be using Pytorch to build out neural network. I prefer using Pytorch as it gives more flexibility and more power to user to have control over the network. 
+
+Torch : An open source machine learning framework that accelerates the path from research prototyping to production deployment.
 
 ```python
 #import libraries
@@ -255,6 +270,9 @@ except:
   print("GPU device not found.")
 ```
 
+The above code will check for gpu.
+
+CUDA is a parallel computing platform and application programming interface model created by Nvidia. It allows software developers and software engineers to use a CUDA-enabled graphics processing unit for general purpose processing.
 
 ```python
 import torch
@@ -281,8 +299,9 @@ MNIST dataset contains 60,000 training and 10,000 test images. Each image is of 
 - We'll use a batch_size = 128 for training.
 - The values 0.1307 and 0.3081 used for the Normalize() transformation below are the global mean and standard deviation for MNIST dataset.
 
-Why are we normalizing?
-<b>Geoffrey Hinton's</b> [learning](http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf) about gradient descent: 
+**Why are we normalizing?**
+
+Geoffrey Hinton's [learning](http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf) about gradient descent:
 
 > Going	downhill	reduces	the	error,	but	the direction	of	steepest	descent	does	not	point at	the	minimum	unless	the	ellipse	is	a	circle.
 
@@ -294,6 +313,7 @@ batch_size = 128
 kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
 ```
 
+The below code will download the MNIST dataset, apply transforms and load the tensors into dataloader.
 
 ```python
 mnist_trainset = datasets.MNIST(root="./data", train=True, download=True,
@@ -318,8 +338,7 @@ test_loader = torch.utils.data.DataLoader(mnist_testset,
                                           batch_size=batch_size, shuffle=True, **kwargs)
 ```
 
-The above code will download the MNIST dataset, apply transforms and load the tensors into dataloader.
-
+A tensor is a container which can house data in N dimensions. It is an algebraic object that describes a linear mapping from one set of algebraic objects to another.
 
 **Visualizing the dataset**
 
@@ -353,7 +372,7 @@ for i in range(6):
 
 In the below code, we will write what input size we are getting, what will be the output and what is the receptive field.
 
-Things to keep in mind, we already saw what happens to receptive field size when applying kernel size 3x3 on object, everytime there is an addition of 2. 
+Things to keep in mind, we already saw what happens to receptive field size when applying kernel size 3x3 on object, it increases by 2.
 
 But when there is max pooling layer in between, the receptive field doubles. The sentence is not completely true. We will see the effect on receptive field and derive a formula later, as it depends on stride, padding and other factors. So, just go through the post as it is for now. We will learn the concepts slowly.
 
@@ -382,7 +401,9 @@ class Net(nn.Module):
         return F.log_softmax(x)
 ```
 
-Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? I have also included the link of code at the end of post.
+The purpose of adding padding=1 is to add 2 additional pixels in x and y rows for convolution.
+
+Now, as this is very simple network, we should get around 98% accuracy on test dataset even if I train on 1 epoch. But here, the network will behave strange. Find out why ? I have also included the link of code at the end of post.
 
 **The architecture**
 
@@ -416,7 +437,7 @@ summary(model, input_size=(1, 28, 28))
     Estimated Total Size (MB): 25.85
     ----------------------------------------------------------------
 
-torchsummary is very nice package that will give us output layer size and parameters information. You see there are total 6,379,786 learnable parameters. We will go around optimizing the code in future posts. 
+torchsummary is a package that will give us output layer size and parameters information. You see there are total 6,379,786 learnable parameters. We will go around optimizing the code in future posts. 
 
 
 **Training the model**
@@ -467,7 +488,11 @@ for epoch in range(1, 2): # training network on 1 epoch
     test(model, device, test_loader)
 ```
 
-You might be getting very low accuracy on test dataset. This shouldn't happen. Find the error above and comment below.
+We have used, torch.no_grad() to make sure test data does not "leak" into the model.
+
+You might be getting very low accuracy on test dataset. This shouldn't happen.
+
+> FIND THE ERROR IN ABOVE CODE AND COMMENT BELOW
 
 I have included colab notebook [link](https://gist.github.com/myselfHimanshu/b9f9f024c14eaa87a271172746b79eac). Run and play around.
 
