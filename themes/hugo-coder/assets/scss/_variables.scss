@@ -1,12 +1,12 @@
 // Fonts
-$text-font-family: Merriweather, Georgia, serif;
-$heading-font-family: Lato, Helvetica, sans-serif;
+$text-font-family:  Georgia, Merriweather, Monospace, Georgia, serif;
+$heading-font-family: Georgia, Helvetica,  sans-serif;
 $code-font-family: 'Source Code Pro', 'Lucida Console', monospace;
 
 // Colors
 $bg-color: rgb(255, 255, 255) !default;
 $fg-color: #212121 !default;
-$alt-bg-color: rgb(253, 206, 206) !default;
+$alt-bg-color: rgb(207, 251, 240) !default;
 $alt-fg-color: #000 !default;
 $link-color: #1565c0 !default;
 
@@ -14,5 +14,5 @@ $link-color: #1565c0 !default;
 $bg-color-inverted: #212121 !default;
 $fg-color-inverted: #ffffff !default;
 $alt-bg-color-inverted: #424242 !default;
-$alt-fg-color-inverted: #fafafa !default;
+$alt-fg-color-inverted: #ffffff !default;
 $link-color-inverted: #f44336 !default;
