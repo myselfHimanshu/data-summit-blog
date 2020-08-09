@@ -107,7 +107,7 @@ Each loss is backpropogated in opposite direction of forward propogation steps a
 
 ### Different types of RNNs
 
-![](http://karpathy.github.io/assets/rnn/diags.jpeg)
+![](https://karpathy.github.io/assets/rnn/diags.jpeg)
 
 The architecture that we have described before is *many to many*. Other example with its architecture are mentioned above in table.
 

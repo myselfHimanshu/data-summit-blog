@@ -301,7 +301,7 @@ MNIST dataset contains 60,000 training and 10,000 test images. Each image is of 
 
 **Why are we normalizing?**
 
-Geoffrey Hinton's [learning](http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf) about gradient descent:
+Geoffrey Hinton's [learning](https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf) about gradient descent:
 
 > Going	downhill	reduces	the	error,	but	the direction	of	steepest	descent	does	not	point at	the	minimum	unless	the	ellipse	is	a	circle.
 

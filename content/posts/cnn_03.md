@@ -57,7 +57,7 @@ These visualization helps us in optimizing CNN architecture. The improvements ca
 Please visit these links for more visualization: 
 
 - [Distil : Feature Visualization](https://distill.pub/2017/feature-visualization/)
-- [CS231n : Visualizing and Understanding](http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture12.pdf)
+- [CS231n : Visualizing and Understanding](https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture12.pdf)
 
 **What is Checkboard Issue?**
 
