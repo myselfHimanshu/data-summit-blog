@@ -1,5 +1,4 @@
 ---
-title: "About"
 date: 2018-11-06T09:48:54+05:30
 draft: false
 ---
