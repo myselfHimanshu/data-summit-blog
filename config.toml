@@ -77,7 +77,11 @@ disqusShortname = "myselfhimanshu-github-io"
         url = "/posts/"
 
         [[languages.en.menu.main]]
+        name = "Journal"
+        weight = 3
+        url = "/daysofcode/"
+
+        [[languages.en.menu.main]]
         name = "Contact me"
         weight = 4
         url = "/contact/"
-
