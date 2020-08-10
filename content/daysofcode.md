@@ -32,7 +32,6 @@ Now that i have completed 3 chapters I should start with some coding practice to
 signup for 30 days code challenge and practice C++ section.
 
 C++ section achieved 3 stars in Cpp badge.
- 
 
 
 <span style="font-family:Monospace; font-size:2em;">DAY 2</span>
