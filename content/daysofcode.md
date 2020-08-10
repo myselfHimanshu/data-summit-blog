@@ -22,15 +22,7 @@ draft: true
 
 Target :
 
-- [ ] [Teach yourself C++ in One Hour a Day. LESSON 1](https://g.co/kgs/bCYnch)
-
-Learnings and Code Links :
-
-- Hello World CPP program.
-- Difference between interpreter and a compiler ?
-  - interpreter is an intermediate byte code
-  - compiler takes code as input and generates an object file.
-- Job of linker
-  - code has dependencies, libraries and functions in other code files. Creating links and generating an executable that integrates all these dependencies is the job of the linker.
-- Steps in development cycle
-  - code, compile, link, execute, debug, fix repeat
+- [Teach yourself C++ in One Hour a Day.](https://g.co/kgs/bCYnch)
+  - [x] LESSON 1
+  - [x] LESSON 2
+  - [x] LESSON 3
