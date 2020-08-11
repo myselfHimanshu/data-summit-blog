@@ -18,26 +18,31 @@ draft: true
 
 > Languages to learn : C++, Advanced Python
 
-<span style="font-family:Monospace; font-size:2em;">DAY 1</span>
-
-Target :
+<details>
+    <summary><span style="font-family:Monospace; font-size:2em;">DAY 1</span></summary>
 
 - [Teach yourself C++ in One Hour a Day.](https://g.co/kgs/bCYnch)
   - [x] LESSON 1
   - [x] LESSON 2
   - [x] LESSON 3
 
-Now that i have completed 3 chapters I should start with some coding practice too. Let's signup on Hackerrank and do some C++ coding challenges. Easy challenges will help in building the concepts.
+C++ 101, Anatomy of C++, using variables and declaring constants.
 
-signup for 30 days code challenge and practice C++ section.
+Now that i have completed 3 chapters I should start with some coding practice too. Let's signup on Hackerrank and do some C++ coding challenges. Easy challenges will help in building the concepts. Signup for 30 days code challenge and practice C++ section.
 
-C++ section achieved 3 stars in Cpp badge.
+Cpp badge 3 stars achieved.
 
+</details>
 
-<span style="font-family:Monospace; font-size:2em;">DAY 2</span>
-
-Target :
+<details>
+    <summary><span style="font-family:Monospace; font-size:2em;">DAY 2</span></summary>
 
 - [Teach yourself C++ in One Hour a Day.](https://g.co/kgs/bCYnch)
-  - [ ] LESSON 4
+  - [x] LESSON 4
   - [ ] LESSON 5
+
+Manging arrays and strings
+
+Let's attempt some more problems on Hackerrank.
+
+</details>
