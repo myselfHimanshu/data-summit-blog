@@ -42,7 +42,7 @@ Cpp badge 3 stars achieved.
   - [x] LESSON 5
 
 - [DSA - Codechef](https://www.codechef.com/LEARNDSA?itm_campaign=contest_listing)
-  - [ ] Complexity analysis and basics warm up.
+  - [x] Complexity analysis and basics warm up. ( first 3 questions )
 
 Manging arrays and strings. Expressions, Statements and Operators.
 
@@ -60,6 +60,6 @@ Sizeof(...) is an operator not a function.
   - [ ] LESSON 7
 
 - [DSA - Codechef](https://www.codechef.com/LEARNDSA?itm_campaign=contest_listing)
-  - [ ] Complexity analysis and basics warm up.
+  - [ ] Complexity analysis and basics warm up. (next 3)
 
 </details>
