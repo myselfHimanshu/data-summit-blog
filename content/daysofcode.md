@@ -60,9 +60,20 @@ Sizeof(...) is an operator not a function.
   - [x] LESSON 7
 
 - [DSA - Codechef](https://www.codechef.com/LEARNDSA?itm_campaign=contest_listing)
-  - [ ] Complexity analysis and basics warm up. (next 6)
+  - [x] Complexity analysis and basics warm up. (next 4)
 
 Hackerrank 30 days of code, challenge 3 finished. It's better to start with basic competitive coding in C++ and get hands on. It's okay to search google for syntax but not okay to look at answer before attempting.
 
+</details>
+
+<details>
+    <summary><span style="font-family:Monospace; font-size:2em;">DAY 4</span></summary>
+
+- [Teach yourself C++ in One Hour a Day.](https://g.co/kgs/bCYnch)
+  - [ ] LESSON 8
+  - [ ] LESSON 9
+
+- [DSA - Codechef](https://www.codechef.com/LEARNDSA?itm_campaign=contest_listing)
+  - [ ] Complete Complexity analysis and basics warm up.
 
 </details>
