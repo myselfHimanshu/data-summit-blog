@@ -57,12 +57,12 @@ Sizeof(...) is an operator not a function.
 
 - [Teach yourself C++ in One Hour a Day.](https://g.co/kgs/bCYnch)
   - [x] LESSON 6
-  - [ ] LESSON 7
+  - [x] LESSON 7
 
 - [DSA - Codechef](https://www.codechef.com/LEARNDSA?itm_campaign=contest_listing)
   - [ ] Complexity analysis and basics warm up. (next 6)
 
-Hackerrank 30 days of code, code 3 finished.
+Hackerrank 30 days of code, challenge 3 finished. It's better to start with basic competitive coding in C++ and get hands on. It's okay to search google for syntax but not okay to look at answer before attempting.
 
 
 </details>
