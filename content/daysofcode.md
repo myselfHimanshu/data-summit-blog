@@ -56,10 +56,13 @@ Sizeof(...) is an operator not a function.
     <summary><span style="font-family:Monospace; font-size:2em;">DAY 3</span></summary>
 
 - [Teach yourself C++ in One Hour a Day.](https://g.co/kgs/bCYnch)
-  - [ ] LESSON 6
+  - [x] LESSON 6
   - [ ] LESSON 7
 
 - [DSA - Codechef](https://www.codechef.com/LEARNDSA?itm_campaign=contest_listing)
-  - [ ] Complexity analysis and basics warm up. (next 3)
+  - [ ] Complexity analysis and basics warm up. (next 6)
+
+Hackerrank 30 days of code, code 3 finished.
+
 
 </details>
