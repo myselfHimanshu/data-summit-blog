@@ -102,7 +102,7 @@ audio.play()
 
 </center>
 
-Complexity Analysis DONE. Next in the series is Data Structures (Vectors, Pairs, Linked List, Stack, Queue). First we will go through Udemy and MyCodeSchool content and implement these data structures in C++ and then start attempting the Codechef part.
+- Complexity Analysis DONE. Next in the series is Data Structures (Vectors, Pairs, Linked List, Stack, Queue). First we will go through Udemy and MyCodeSchool content and implement these data structures in C++ and then start attempting the Codechef part.
 
 - People says it takes 21 days to form a habit. I am going to challenge myself for these 21 days.
 - 5 Habits of Successful People
