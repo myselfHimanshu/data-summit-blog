@@ -102,7 +102,10 @@ audio.play()
 
 </center>
 
+- Lesson 8 was about pointers.
 - Complexity Analysis DONE. Next in the series is Data Structures (Vectors, Pairs, Linked List, Stack, Queue). First we will go through Udemy and MyCodeSchool content and implement these data structures in C++ and then start attempting the Codechef part.
+- Udemy course mentioned section 1-2 contains, Complexity analysis, static and dynamic arrays.
+- MyCodeSchool contains Arrays and introduction to linked list.
 
 - People says it takes 21 days to form a habit. I am going to challenge myself for these 21 days.
 - 5 Habits of Successful People
@@ -113,7 +116,21 @@ audio.play()
   - set goals for the day
 - As I have a 9-6 job, I will prioritize and create my own agenda similar to the one above for 21 days and adhere it.
 - There are books that I would like to read and add it my knowledge library, next 21 days target:
-  - Think and Grow Rich by Napoleon Hill ⏳
-  - Many Lives Many Masters by Brian Weiss ⏳
-  - Zero to One by Blake Masters and Peter Thiel ⏳
-  - The Power of Habit by Charles Duhigg ⏳
+  - Think and Grow Rich by Napoleon Hill 📚
+  - Many Lives Many Masters by Brian Weiss 📖
+  - Zero to One by Blake Masters and Peter Thiel 📚
+  - The Power of Habit by Charles Duhigg 📚
+
+- Time to start with a book => Many Lives and Many Masters 📖.
+
+<span style="font-family:Monospace; font-size:3em;">DAY 5</span>
+
+<center>
+
+|Target|Link|Progress|
+|:----:|:----:|:----:|
+|Lesson 9|[book](https://g.co/kgs/bCYnch)||
+|Section (3-4)|[Data Structures Udemy](https://www.udemy.com/course/introduction-to-data-structures/)||
+|Videos (5-21)|[Data Structures MyCodeSchool](https://www.youtube.com/watch?v=92S4zgXN17o&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)||
+
+</center>
