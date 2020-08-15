@@ -97,7 +97,7 @@ audio.play()
 |:----:|:----:|:----:|
 |Lesson 8|[book](https://g.co/kgs/bCYnch)|✅|
 |Complexity analysis and <br> basics warm up. ( finish rest )|[DSA - Codechef](https://www.codechef.com/LEARNDSA?itm_campaign=contest_listing)|✅|
-|Section (1-2)|[Data Structures Udemy](https://www.udemy.com/course/introduction-to-data-structures/)||
+|Section (1-2)|[Data Structures Udemy](https://www.udemy.com/course/introduction-to-data-structures/)|✅|
 |Videos (1-4)|[Data Structures MyCodeSchool](https://www.youtube.com/watch?v=92S4zgXN17o&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)||
 
 </center>
@@ -129,8 +129,26 @@ audio.play()
 
 |Target|Link|Progress|
 |:----:|:----:|:----:|
+|Lesson 9|[book](https://g.co/kgs/bCYnch)|📝|
+|Section (3-4)|[Data Structures Udemy](https://www.udemy.com/course/introduction-to-data-structures/)|📝|
+|Videos (5-21)|[Data Structures MyCodeSchool](https://www.youtube.com/watch?v=92S4zgXN17o&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)|📝|
+
+- I wasn't able to do much on day 5. Wasn't able to complete sections, so will shift tomorrow and complete sections till tomorrow.
+- I cannot let this become a pile, if I do that today, tomorrow it will be become burden on me.
+
+</center>
+
+<span style="font-family:Monospace; font-size:3em;">DAY 6</span>
+
+<center>
+
+|Target|Link|Progress|
+|:----:|:----:|:----:|
 |Lesson 9|[book](https://g.co/kgs/bCYnch)||
-|Section (3-4)|[Data Structures Udemy](https://www.udemy.com/course/introduction-to-data-structures/)||
+|Lesson 10|[book](https://g.co/kgs/bCYnch)||
+|Section (3-6)|[Data Structures Udemy](https://www.udemy.com/course/introduction-to-data-structures/)||
 |Videos (5-21)|[Data Structures MyCodeSchool](https://www.youtube.com/watch?v=92S4zgXN17o&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)||
+
+
 
 </center>
