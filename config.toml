@@ -18,16 +18,16 @@ googleAnalytics = "UA-162762722-1"
 disqusShortname = "myselfhimanshu-github-io"
 
 [params]
-    author = "Himanshu Panwar"
-    info = "Deep Learning Engineer | Computer Vision & NLP Apprentice"
-    description = "Documenting personal notes on Computer Vision, Natural Language Processing and Deep Learning"
-    keywords = "blog,developer,personal,deep learning,vision,nlp,notes"
+    author = "HIMANSHU PANWAR CHRONICLES"
+    info = "Data, Learning, Adventure"
+    description = "Documenting personal notes on Analytics, Data Science, Machine Learning, Computer Vision, Natural Language Processing and Deep Learning"
+    keywords = "blog,developer,personal,deep learning,vision,nlp,notes,adventure,machine learning,analytics,data,challenge"
     avatarurl = "images/avatar.png"
 
     favicon_32 = "/img/favicon-32x32.png"
     favicon_16 = "/img/favicon-16x16.png"
 
-    footercontent = "We don't want to die without any scars."
+    footercontent = "Don't Stop Learning."
 
     hidecredits = true
     hidecopyright = false
@@ -79,7 +79,7 @@ disqusShortname = "myselfhimanshu-github-io"
         [[languages.en.menu.main]]
         name = "Journal"
         weight = 3
-        url = "/daysofcode/"
+        url = "/journal/"
 
         [[languages.en.menu.main]]
         name = "Contact me"
