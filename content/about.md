@@ -22,4 +22,4 @@ Open to learning more.
 
 ## Contribution Calendar
 
-<img src="https://ghchart.rshah.org/af4848/myselfHimanshu" alt="Himanshu's Github Chart" width=100%/>
+<img src="https://ghchart.rshah.org/af4848/myselfhimanshu" alt="Github Chart" title="Github Chart" width="100%" />
