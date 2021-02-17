@@ -3,6 +3,9 @@ title = "Himanshu Panwar"
 
 theme = "hugo-coder"
 
+[markup.goldmark.renderer]
+unsafe= true
+
 languagecode = "en"
 defaultcontentlanguage = "en"
 
