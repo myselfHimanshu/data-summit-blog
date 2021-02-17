@@ -8,7 +8,7 @@ html {
   font-size: 62.5%; }
 
 body {
-  color: #212121;
+  color: #000000;
   background-color: white;
   font-family: Georgia, Merriweather, Monospace, Georgia, serif;
   font-size: 1.6em;
@@ -20,7 +20,7 @@ body {
       line-height: 1.6em; } }
 a {
   font-weight: 300;
-  color: #1565c0;
+  color: #c01515;
   text-decoration: none; }
   a:focus, a:hover {
     text-decoration: underline; }
@@ -103,7 +103,7 @@ code {
   font-size: 1.6rem;
   font-weight: 400;
   background-color: #cffbf0;
-  color: #212121;
+  color: #000000;
   padding: 0.2rem 0.4rem 0.2rem 0.4rem; }
 
 blockquote {
@@ -238,11 +238,11 @@ img {
           text-align: left; } }
     .list ul li .title {
       font-size: 1.8rem;
-      color: #212121;
+      color: #000000;
       font-family: Georgia, Helvetica, sans-serif;
       font-weight: 700; }
       .list ul li .title:hover, .list ul li .title:focus {
-        color: #1565c0; }
+        color: #c01515; }
 
 .centered {
   display: flex;
@@ -268,13 +268,13 @@ img {
         display: inline-block;
         position: relative; }
         .centered .about ul li a {
-          color: #212121;
+          color: #000000;
           text-transform: uppercase;
           margin-left: 1.0rem;
           margin-right: 1.0rem;
           font-size: 1.6rem; }
           .centered .about ul li a:hover, .centered .about ul li a:focus {
-            color: #1565c0; }
+            color: #c01515; }
           @media only screen and (max-width: 768px) {
             .centered .about ul li a {
               font-size: 1.4rem; } }
@@ -308,9 +308,9 @@ img {
     font-family: Georgia, Helvetica, sans-serif;
     font-weight: 700;
     line-height: 6.0rem;
-    color: #212121; }
+    color: #000000; }
   .navigation a:hover, .navigation a:focus {
-    color: #1565c0; }
+    color: #c01515; }
   .navigation .navigation-title {
     letter-spacing: 0.1rem;
     text-transform: uppercase; }
@@ -349,7 +349,7 @@ img {
         margin-right: 1.0rem; }
     @media only screen and (max-width: 768px) {
       .navigation .navigation-list .menu-separator {
-        border-top: 2px solid #212121;
+        border-top: 2px solid #000000;
         margin: 0 8.0rem; }
         .navigation .navigation-list .menu-separator span {
           display: none; } }
@@ -370,10 +370,10 @@ img {
         font-size: 2.4rem;
         font-weight: 400;
         line-height: 6.0rem;
-        color: #212121;
+        color: #000000;
         cursor: pointer; }
         .navigation .menu-button:hover, .navigation .menu-button:focus {
-          color: #1565c0; } }
+          color: #c01515; } }
 .pagination {
   margin-top: 6.0rem;
   text-align: center;
@@ -399,6 +399,6 @@ img {
   line-height: 2.0rem;
   margin-bottom: 1.0rem; }
   .footer a {
-    color: #1565c0; }
+    color: #c01515; }
 
 /*# sourceMappingURL=coder.css.map */

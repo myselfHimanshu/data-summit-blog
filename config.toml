@@ -50,11 +50,6 @@ disqusShortname = "myselfhimanshu-github-io"
     weight = 1
     url = "https://github.com/myselfHimanshu/"
 [[params.social]]
-    name = "Bitbucket"
-    icon = "fab fa-bitbucket fa-2x"
-    weight = 2
-    url = "https://bitbucket.org/himanshu_/"
-[[params.social]]
     name = "Twitter"
     icon = "fab fa-twitter fa-2x"
     weight = 3
