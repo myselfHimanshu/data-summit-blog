@@ -149,7 +149,7 @@ Look at below image, how does a network learn to identify each block that is men
 We refer `gradient` as change in brightness over a series of pixels. 
 
 <p align="center">
-  <img width="500" height="180" src="https://huaxin.cl/wp-content/uploads/2018/09/gradient-black-to-white-wallpaper-4.jpg">
+  <img width="500" height="180" src="https://static.bhphotovideo.com/explora/sites/default/files/b-to-wh.jpg">
 </p>
 
 The above image is linear gradient from black to white. This gradient is smooth and we wouldn't say there is edge in this image. Edges are a bit fuzzy in above image. In real objects those `edges` can be found by looking at sharp transitions. You can find edges in the image below
