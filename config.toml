@@ -36,6 +36,7 @@ disqusShortname = "myselfhimanshu-github-io"
     hidecopyright = false
 
     snsShare = true
+    inverted = false
 
     rtl = false
 

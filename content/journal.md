@@ -12,6 +12,8 @@ The ability to learn is a superpower and once we cultivate this superpower, we c
 
 > It's only when we're pushed to our absoulte limits that we can truly shine.
 
-![](https://gph.is/g/ae1JWY8)
+<p align="center">
+  <img src="https://media.giphy.com/media/dxld1UBIiGuoh31Fus/giphy.gif">
+</p>
 
 I’ll write about my progress daily in my journal tag to force public accountability. The purpose of this post, will be to outline the skills I plan to master + rules for this challenge. Not only will this be a challenge in learning, this will be a challenge in self-discipline.
